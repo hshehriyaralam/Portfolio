@@ -15,7 +15,7 @@ const Hero = () => {
         MERN Stack Developer  
       </h1>
       <p  className='max-w-2xl mx-auto font-Ovo ' >
-        I am MERN Stack Developer Fron SMIT, Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, officiis!
+        I'm a passionate MERN Stack Developer with a strong specialty in Frontend Development. I have extensive experience working with modern JavaScript frameworks and libraries, focused on building responsive, scalable, and high-performance web applications.
       </p>
       <div  className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
         <a href="#contact"

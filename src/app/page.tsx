@@ -1,5 +1,6 @@
 'use client'
-import Hero from '@/component/Header'
+import About from '@/component/About'
+import Hero from '@/component/Hero'
 import Navbar from '@/component/Navbar'
 import React from 'react'
 
@@ -8,6 +9,7 @@ const page = () => {
     <div>
       <Navbar />
       <Hero  />
+      <About />
     </div>
   )
 }
