@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${OutfitFont.className} ${OvoFont.className} antialiased`}
+        className={`${OutfitFont.className} ${OvoFont.className} antialiased leading-8 overflow-x-hidden  `}
       >
         {children}
       </body>
