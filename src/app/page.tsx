@@ -3,6 +3,7 @@ import About from '@/component/About'
 import Hero from '@/component/Hero'
 import Navbar from '@/component/Navbar'
 import Services from '@/component/Services'
+import Work from '@/component/Work'
 import React from 'react'
 
 const page = () => {
@@ -12,6 +13,7 @@ const page = () => {
       <Hero  />
       <About />
       <Services />
+      <Work />
     </div>
   )
 }
