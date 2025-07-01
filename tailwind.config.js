@@ -12,7 +12,7 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       boxShadow: {
-        custom: "10px 10px 0 #000",
+        black: "10px 10px 0 #000",
       },
       fontFamily: {
         sans: ["Outfit", "sans-serif"],
@@ -21,3 +21,4 @@ module.exports = {
   },
   plugins: [],
 };
+w
