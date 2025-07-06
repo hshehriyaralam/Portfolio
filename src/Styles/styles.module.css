@@ -1,0 +1,53 @@
+/* --------------------
+   Colors
+-------------------- */
+
+.LightHover {
+  background-color: #fcf4ff;
+}
+
+.DarkHover {
+  background-color: #2a004a;
+}
+
+.DarkTheme {
+  background-color: #11001F;
+}
+
+/* --------------------
+   Box Shadows
+-------------------- */
+
+
+
+.ShadowBlack:hover {
+  box-shadow: 3px 3px 0 #000; /* Slightly bigger shadow on hover */
+}
+
+.ShadowWhite:hover {
+  box-shadow: 2px 2px 0 #fff; /* Slightly bigger shadow on hover */
+}
+
+/* --------------------
+   Font Families
+-------------------- */
+
+.FontOvo {
+  font-family: "Ovo", serif;
+}
+
+.FontOutfit {
+  font-family: "Outfit", sans-serif;
+}
+
+/* --------------------
+   Hover Backgrounds
+-------------------- */
+
+.HoverLightHover:hover {
+  background-color: #fcf4ff;
+}
+
+.HoverDarkHover:hover {
+  background-color: #2a004a;
+}

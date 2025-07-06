@@ -1,8 +1,10 @@
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import Styles from '../Styles/styles.module.css'
 
-const Contact = () => {
+
+export default function Contact ()  {
     const [result, setResult] = useState('');
 
   const onSubmit = async (event : any) => {
@@ -29,9 +31,9 @@ const Contact = () => {
   };
   return (
     <div  id='contact'  className='w-full px-[12%] py-10 scroll-mt-20  bg-[url("/footer-bg-color.png")]  bg-no-repeat bg-center bg-[length : 90%_auto]'>
-      <h4 className='text-center mb-2 text-lg font-Ovo '>Contact with me</h4>
-      <h2 className='text-center text-4xl font-Ovo '>Get in touch</h2>
-       <p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo ' >I'd love to hear from you! If you have any questions, comments, or feedback, please use the form below  </p>
+      <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>Contact with me</h4>
+      <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>Get in touch</h2>
+       <p className={`text-center max-w-2xl mx-auto mt-5 mb-12 ${Styles.FontOvo} `} >I'd love to hear from you! If you have any questions, comments, or feedback, please use the form below  </p>
 
        <form   onSubmit={onSubmit}  className='max-w-2xl mx-auto' >
         <div className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] gap-6 mt-10 mb-8 ' >
@@ -61,4 +63,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+
