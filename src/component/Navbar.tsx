@@ -37,7 +37,13 @@ export default function Navbar ()  {
     <div className={`fixed top-0 right-0 w-10/12 -z-10 translate-y-[-80%]`}>
     <Image  src={assets.header_bg_color } alt='Header_Bg'   className='w-full'/>
     </div>
-    <nav  className={`w-full fixed px-5  lg:px-8 xl:px-[8%] py-3 flex items-center justify-between z-50 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : ""}`}>
+    <nav  className={`w-full fixed px-5  lg:px-8 xl:px-[8%] py-3 flex items-center justify-between z-50 
+    ${isScroll ?  `${themeValue ?  `bg-white bg-opacity-50 backdrop-blur-lg shadow-sm` : `${Styles.DarkTheme} border-b border-gray-500  `}` : `` }
+    
+    
+    `}
+    
+    >
         <a href="#top">
             <Image alt='Logo'  src={ themeValue ? assets.logo : assets.logo_dark}
             className='w-24 cursor-pointer mr-14 '
@@ -57,7 +63,7 @@ export default function Navbar ()  {
           <button onClick={changeTheme}  className='cursor-pointer'>
             <Image src={ themeValue ?  assets.moon_icon : assets.sun_icon} alt='Toggle' className='w-5' />
           </button>
-            <a href="#contact"  className={`hidden  lg:flex items-center gap-3 px-8 py-2 border border-gray-500 rounded-full ml-4 ${Styles.FontOvo}`} >Contact <Image alt='arrow_icons'  src={assets.arrow_icon}  
+            <a href="#contact"  className={`hidden  lg:flex items-center gap-3 px-8 py-2 border border-gray-400 rounded-full ml-4 ${Styles.FontOvo}`} >Contact <Image alt='arrow_icons'  src={themeValue ?  assets.arrow_icon  : assets.arrow_icon_dark }  
             className='w-3' /> </a>
 
             <button   className='block md:hidden ml-3  cursor-pointer' onClick={openMenu}>
