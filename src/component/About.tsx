@@ -15,11 +15,11 @@ export default function About ()  {
 
       <div  className='flex w-full flex-col lg:flex-row items-center gap-20 my-6' >
         <div  className='w-64 sm:w-80 rounded-3xl max-w-none ' >
-          <Image src={assets.user_image} alt='user_img'  className='w-full rounded-3xl ' />
+          <Image src={assets.SHahmeer_user} alt='user_img'  className='w-full rounded-3xl ' />
         </div>
         <div className='flex-1' >
           <p>
-            I am a passionate MERN Stack Developer with a strong specialty in Frontend Development. I have extensive experience working with modern JavaScript frameworks and libraries, focused on building responsive, scalable, and high-performance web applications.
+            I’m a passionate MERN and Next.js Developer specializing in Frontend Development. Skilled in modern JavaScript frameworks and UI libraries like Shadcn, Magic UI, ReactBits, and Tailwind CSS to build responsive and high-performance web applications.
           </p>
           <ul className='grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mt-4' > 
             {infoList.map(({icon,iconDark,title,description}, index) => (

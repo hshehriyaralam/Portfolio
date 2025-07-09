@@ -12,7 +12,7 @@ export default function Hero ()  {
   return (
     <div className='w-11/12 max-w-3xl pt-50  md:pt-20  text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 '>
       <div>
-        <Image src={assets.profile_img} alt='Proile_Photo'  className='rounded-full w-28 ' />
+        <Image src={assets.Shahmeer_logo} alt='Proile_Photo'  className='rounded-full w-28 ' />
       </div>
       <h3  className={`flex item-end gap-2 text-xl md:text-2xl mb-3 ${Styles.FontOvo} `}>
         Hi! I'm Shehriyar Alam <Image src={assets.hand_icon} alt='hand_icon' className='w-6' />
@@ -21,7 +21,7 @@ export default function Hero ()  {
         MERN Stack Developer  
       </h1>
       <p  className={`max-w-2xl mx-auto ${Styles.FontOvo} `} >
-        I'm a passionate MERN Stack Developer with a strong specialty in Frontend Development. I have extensive experience working with modern JavaScript frameworks and libraries, focused on building responsive, scalable, and high-performance web applications.
+       I’m a passionate MERN Stack Developer specializing in Frontend Development. Experienced in modern JavaScript frameworks to build responsive and high-performance web applications.
       </p>
       <div  className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
         <a href="#contact"
