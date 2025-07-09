@@ -1,11 +1,13 @@
 import { assets, serviceData } from '@/assets/assets'
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
+import { ContextTheme } from '@/Context/ThemeContext'
+
 
 
 export default function Services ()  {
-
+      const {themeValue} = useContext(ContextTheme)
   return (
     <div  id='services' className='w-full px-[12%] py-8 scroll-mt-20' >
       <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>What I offer </h4>
@@ -17,12 +19,12 @@ export default function Services ()  {
           className={`border border-gray-400 rounded-lg px-8 py-10 ${Styles.ShadowBlack}  cursor-pointer  ${Styles.HoverLightHover} hover:-translate-y-1  duration-500 `}
           >
             <Image  src={icon} alt={title} className='w-10' />
-            <h3 className='text-lg my-4 text-gray-900 ' >{title}</h3>
-            <p className='text-sm text-gray-900 leading-5 ' >
+            <h3 className={`text-lg my-4 ${themeValue ? 'text-gray-900' : 'text-gray-400'} `} >{title}</h3>
+            <p className={`text-sm  leading-5  ${themeValue ? 'text-gray-900' : 'text-gray-400'} `} >
               {description}
             </p>
             <a href={link} className='flex items-center gap-2 text-sm mt-5 ' >
-              Read more  <Image src={assets.right_arrow} alt='right_arrow' className='w-4' />
+              Read more  <Image src={themeValue ? assets.right_arrow : assets.right_arrow_white} alt='right_arrow' className='w-4' />
             </a>
           </div>
         ))}

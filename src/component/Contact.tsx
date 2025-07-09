@@ -1,11 +1,15 @@
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Styles from '../Styles/styles.module.css'
+import { ContextTheme } from '@/Context/ThemeContext'
+
 
 
 export default function Contact ()  {
-    const [result, setResult] = useState('');
+    const [result, setResult] = useState('')
+    const {themeValue} = useContext(ContextTheme)
+    
 
   const onSubmit = async (event : any) => {
     event.preventDefault();
@@ -30,7 +34,7 @@ export default function Contact ()  {
     }
   };
   return (
-    <div  id='contact'  className='w-full px-[10%] py-8 scroll-mt-20  bg-[url("/footer-bg-color.png")]  bg-no-repeat bg-center bg-[length : 90%_auto]'>
+    <div  id='contact'  className={`w-full px-[10%] py-8 scroll-mt-20  ${themeValue ? `bg-[url("/footer-bg-color.png")]`   : 'bg-transparent' }   bg-no-repeat bg-center bg-[length : 90%_auto]`}>
       <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>Contact with me</h4>
       <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>Get in touch</h2>
        <p className={`text-center max-w-2xl mx-auto mt-4 mb-6 ${Styles.FontOvo} `} >I'd love to hear from you! If you have any questions, comments, or feedback, please use the form below  </p>
@@ -41,23 +45,23 @@ export default function Contact ()  {
             placeholder='Enter your name'
             name='name'
             required 
-            className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white'
+            className={`flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md  ${themeValue ? 'bg-white'  : 'bg-transparent '} `}
             />
             <input type="email" 
             placeholder='Enter your email'
             name='email'
             required
-            className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white'            
+            className={`flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md ${themeValue ? 'bg-white'  : 'bg-transparent '}`}            
             />
         </div>
         <textarea rows={6} placeholder='Enter your message' required
         name='message'
-        className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-4'
+        className={`w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md  mb-4  ${themeValue ? 'bg-white'  : 'bg-transparent '} `}
         ></textarea>
         <button 
-        className='py-2 px-6 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 '
+        className={`py-2 px-6 w-max flex items-center justify-between gap-2  ${themeValue ?  'bg-black/80 ' : 'bg-transparent border border-gray-700'}  text-white rounded-full mx-auto hover:bg-black duration-500 `}
         type='submit' >Submit now <Image  src={assets.right_arrow_white} alt='right_arrow' className='w-4' /> </button>
-        <p  className='mt-4' >{result}</p>
+        <p  className={`mt-4  ${themeValue ? 'text-gray-900' : 'text-gray-400'}  `} >{result}</p>
        </form>
     </div>
   )

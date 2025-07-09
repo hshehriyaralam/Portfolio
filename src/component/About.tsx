@@ -1,12 +1,15 @@
 import { assets, infoList, toolsData } from '@/assets/assets'
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
+import { ContextTheme } from '@/Context/ThemeContext'
+
 
 
 export default function About ()  {
+      const {themeValue} = useContext(ContextTheme)
   return (
-    <div className='w-full px-[12%] py-10 scroll-mt-20'  id='about' >
+    <div className='w-full px-[12%] py-10  mt-40 md:mt-0 scroll-mt-20'  id='about' >
       <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `} >Introduction</h4>
       <h2 className={`text-center text-5xl ${Styles.FontOvo}`} >About me</h2>
 
@@ -20,15 +23,15 @@ export default function About ()  {
           </p>
           <ul className='grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mt-4' > 
             {infoList.map(({icon,iconDark,title,description}, index) => (
-              <li key={index} className={`border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer ${Styles.HoverLightHover}  hover:-translate-y-1 duration-500  ${Styles.ShadowBlack} `}
+              <li key={index} className={`border-[0.5px] ${themeValue ? 'border-gray-400' : 'border-gray-200'}  rounded-xl p-6 cursor-pointer ${Styles.HoverLightHover}  hover:-translate-y-1 duration-500  ${Styles.ShadowBlack} `}
               >
-                <Image src={icon} alt={title}  className='w-7 mt-3 ' />
-                <h3 className='my-4 font-semibold text-gray-700' >{title}</h3>
-                <p  className='text-gray-900 text-sm '>{description}</p>
+                <Image src={themeValue ? icon : iconDark} alt={title}  className='w-7 mt-3 ' />
+                <h3 className={`my-4 font-semibold   ${themeValue ? 'text-gray-700' : 'text-gray-400'}  `} >{title}</h3>
+                <p  className={`   ${themeValue ? 'text-gray-900' : 'text-gray-400'}  text-sm`}>{description}</p>
               </li>
             ))}
           </ul>
-          <h4 className={`my-4 text-gray-700 ${Styles.FontOvo}`} >Tools I use</h4>
+          <h4 className={`my-4 ${themeValue ? 'text-gray-700' : 'text-gray-400'} ${Styles.FontOvo}`} >Tools I use</h4>
           <ul className='flex items-center gap-3 sm:gap-5 ' >
             {toolsData.map((tool,index) => (
               <li className='flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500' 

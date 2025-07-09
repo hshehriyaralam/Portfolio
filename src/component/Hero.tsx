@@ -1,11 +1,14 @@
 import { assets } from '@/assets/assets.js'
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
+import { ContextTheme } from '@/Context/ThemeContext'
+
 
 
 export default function Hero ()  {
-
+    const {themeValue} = useContext(ContextTheme)
+  
   return (
     <div className='w-11/12 max-w-3xl pt-50  md:pt-20  text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 '>
       <div>
@@ -22,12 +25,12 @@ export default function Hero ()  {
       </p>
       <div  className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
         <a href="#contact"
-        className='px-8 py-2 border border-white rounded-full bg-black text-white flex items-center gap-2 '
+        className={`px-8 py-2 border border-white rounded-full ${themeValue ? 'bg-black' : 'bg-transparent'}  bg-black text-white flex items-center gap-2 `}
         >
         contact me <Image src={assets.right_arrow_white} alt=''  className='w-4' /> </a>
         <a href="/ShehriyarAlamResume.pdf" download
         className='px-8 py-2 border rounded-full border-gary-500 flex items-center gap-2 '
-        >my resume <Image src={assets.download_icon} alt='Cv'  className='w-4' /> </a>
+        >my resume <Image src={   assets.download_icon } alt='Cv'  className='w-4' /> </a>
       </div>
     </div>
   )

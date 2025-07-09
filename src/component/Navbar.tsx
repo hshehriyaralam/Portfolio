@@ -50,7 +50,7 @@ export default function Navbar ()  {
             />
         </a>
 
-        <ul className={`hidden   md:flex items-center gap-6 lg:gap-8   ${!themeValue ? `${Styles.DarkTheme} border border-gray-500` : ''}}
+        <ul className={`hidden   md:flex items-center gap-6 lg:gap-8   ${!themeValue ? `${Styles.DarkTheme} border border-gray-900` : ''}}
         rounded-full px-12 py-3 ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50"}`} >
             <li><a className={`${Styles.FontOvo}`} href="#top">Home</a></li>
             <li><a className={`${Styles.FontOvo}`} href="#about">About me</a></li>
@@ -67,15 +67,15 @@ export default function Navbar ()  {
             className='w-3' /> </a>
 
             <button   className='block md:hidden ml-3  cursor-pointer' onClick={openMenu}>
-            <Image src={assets.menu_black} alt='Menu_Button' className='w-5' />
+            <Image src={themeValue ?  assets.menu_black : assets.menu_white} alt='Menu_Button' className='w-5' />
           </button>
         </div>
 
         {/* Mobile Menu */}
         <ul  ref={MenuRef}
-         className='flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 botom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500'>
+         className={`flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 botom-0 w-64 z-50 h-screen    ${themeValue ?  'bg-rose-50'  : Styles.DarkTheme }     transition duration-500`}>
           <div  className='absolute right-6 top-6'  onClick={closeMenu} >
-            <Image src={assets.close_black} alt='close_icon' className='w-5 cursor-pointer' />
+            <Image src={themeValue ?  assets.close_black : assets.close_white} alt='close_icon' className='w-5 cursor-pointer' />
           </div>
             <li><a className={`${Styles.FontOvo}`} onClick={closeMenu} href="#top">Home</a></li>
             <li><a className={`${Styles.FontOvo}`} onClick={closeMenu} href="#about">About me</a></li>

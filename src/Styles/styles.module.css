@@ -5,7 +5,7 @@
 .LightHover {
   background-color: #fcf4ff;
 }
-
+DarkHover
 .DarkHover {
   background-color: #2a004a;
 }
@@ -47,6 +47,7 @@
 
 .HoverLightHover:hover {
   background-color: #fcf4ff;
+  color: gray;
 }
 
 .HoverDarkHover:hover {
