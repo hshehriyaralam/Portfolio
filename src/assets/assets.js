@@ -42,6 +42,7 @@ import  typescript_icon from './typescript.png'
 import nextjs_icon from './next-js-icon.png'
 import Shahmeer_logo from './Logo_Shahmeer.png'
 import SHahmeer_user from './Shahmeer_abou_image.jpg'
+import github_icon from './github_icon.png'
 
 export const assets = {
     user_image,
@@ -88,6 +89,7 @@ export const assets = {
     nodejs_icon,
     Shahmeer_logo,
     SHahmeer_user,
+    github_icon,
 };
 
 export const workData = [
@@ -95,21 +97,29 @@ export const workData = [
         title: 'Frontend project',
         description: 'Web Design',
         bgImage: '/work-1.png',
+        githubLink : 'https://github.com/hshehriyaralam',
+        liveDemoLink : 'https://money-minder-puce.vercel.app/'
     },
     {
         title: 'Geo based app',
         description: 'Mobile App',
         bgImage: '/work-2.png',
+        githubLink : 'https://github.com/hshehriyaralam',
+        liveDemoLink : 'https://money-minder-puce.vercel.app/'
     },
     {
         title: 'Photography site',
         description: 'Web Design',
         bgImage: '/work-3.png',
+        githubLink : 'https://github.com/hshehriyaralam',
+        liveDemoLink : 'https://money-minder-puce.vercel.app/'
     },
     {
         title: 'UI/UX designing',
         description: 'UI/UX Design',
         bgImage: '/work-4.png',
+        githubLink : 'https://github.com/hshehriyaralam',
+        liveDemoLink : 'https://money-minder-puce.vercel.app/'
     },
 ]
 
@@ -128,4 +138,4 @@ export const infoList = [
 
 export const toolsData = [
     assets.mongodb, assets.react_icon, assets.express_icon, , assets.nodejs_icon,  assets.nextjs_icon, assets.typescript_icon,  assets.git
-];
+];  
