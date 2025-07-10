@@ -12,7 +12,7 @@ export default function Services ()  {
     <div  id='services' className='w-full px-[12%] py-8 scroll-mt-20' >
       <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>What I offer </h4>
       <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>My Services</h2>
-      <p className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `}>I am  a MERN Stack Developer from SMIT , Pakistan with 10 years experience in multiple campanies Like Kolachi, Atlas and Devsinc </p>
+      <p className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `}>I offer professional Frontend, Backend, and Full Stack Development services to build modern, scalable, and high-quality web applications tailored to your needs.</p>
       <div className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]  gap-6 my-8 ' >
         {serviceData.map(({icon,title,description,link}, index) => (
           <div key={index}

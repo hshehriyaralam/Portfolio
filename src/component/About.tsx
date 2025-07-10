@@ -9,11 +9,11 @@ import { ContextTheme } from '@/Context/ThemeContext'
 export default function About ()  {
       const {themeValue} = useContext(ContextTheme)
   return (
-    <div className='w-full px-[12%] py-10  mt-40 md:mt-0 scroll-mt-20'  id='about' >
+    <div className='w-full px-[12%] py-10  mt-15 md:mt-0 scroll-mt-20'  id='about' >
       <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `} >Introduction</h4>
       <h2 className={`text-center text-5xl ${Styles.FontOvo}`} >About me</h2>
 
-      <div  className='flex w-full flex-col lg:flex-row items-center gap-20 my-6' >
+      <div  className='flex w-full  lg:flex-row flex-col lg:items-center gap-8 my-6' >
         <div  className='w-64 sm:w-80 rounded-3xl max-w-none ' >
           <Image src={assets.SHahmeer_user} alt='user_img'  className='w-full rounded-3xl ' />
         </div>
@@ -33,12 +33,16 @@ export default function About ()  {
           </ul>
           <h4 className={`my-4 ${themeValue ? 'text-gray-700' : 'text-gray-400'} ${Styles.FontOvo}`} >Tools I use</h4>
           <ul className='flex items-center gap-3 sm:gap-5 ' >
-            {toolsData.map((tool,index) => (
-              <li className='flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500' 
-              key={index}>
-                <Image src={tool} alt='Tool' className='w-5 sm:w-7 '  />
-              </li>
-            ))}
+            {toolsData.map((tool, index) => (
+                tool ? (
+                  <li
+                    key={index}
+                    className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500"
+                  >
+                    <Image src={tool} alt="Tool" className="w-5 sm:w-7" />
+                  </li>
+                ) : null
+              ))}
           </ul>
         </div>
       </div>

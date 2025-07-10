@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
 import { ContextTheme } from '@/Context/ThemeContext'
+import Link from 'next/link'
 
 
 
@@ -12,10 +13,10 @@ export default function Work ()  {
     <div id='work'  className='w-full px-[12%] py-8 scroll-mt-20'>
       <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>My Portfolio</h4>
       <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>My latest work</h2>
-       <p className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `} >I am  a MERN Stack Developer from SMIT , Pakistan with 10 years experience in multiple campanies Like Kolachi, Atlas and Devsinc </p>
+       <p className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `} >Showcasing my best projects built with modern technologies to solve real-world problems effectively</p>
 
        <div  className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] my-8 gap-5'>
-        {workData.map((project,index) => (
+        {workData.slice(0,4).map((project,index) => (
             <div
             className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group '
              key={index}
@@ -32,11 +33,11 @@ export default function Work ()  {
             </div>
         ))}
        </div>
-       <a href="" className={`w-max flex items-center justify-center gap-2  border-[0.7px]  ${themeValue ?    'border-gray-700 text-gray-700 '   : 'border-gray-400 text-gray-400  '} rounded-full py-2 px-8 mx-auto  my-14 ${Styles.HoverLightHover}  duration-500`} >
+       <Link href={'./Projects'} className={`w-max flex items-center justify-center gap-2  border-[0.7px]  ${themeValue ?    'border-gray-700 text-gray-700 '   : 'border-gray-400 text-gray-400  '} rounded-full py-2 px-8 mx-auto  my-14 ${Styles.HoverLightHover}  duration-500`} >
         Show More <Image  src={ themeValue ?  assets.right_arrow_bold  : assets.right_arrow_white}  alt='Right Arrow'
         className='w-4'  
         />
-       </a>
+       </Link>
     </div>
   )
 }
