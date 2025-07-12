@@ -2,18 +2,25 @@ import { assets, workData } from '@/assets/assets'
 import Image from 'next/image'
 import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
-import { ContextTheme } from '@/Context/ThemeContext'
+import { ContextTheme } from '../Context/ThemeContext'
+import { ContextDescription } from '../Context/DescriptionContext'
 import Link from 'next/link'
 
 
 
 export default function Work ()  {
   const {themeValue} = useContext(ContextTheme)
+  const {getDescriptionBySection,loading} = useContext(ContextDescription)
+  
   return (
     <div id='work'  className='w-full px-[12%] py-8 scroll-mt-20'>
       <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>My Portfolio</h4>
       <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>My latest work</h2>
-       <p className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `} >Showcasing my best projects built with modern technologies to solve real-world problems effectively</p>
+       <div className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `} >
+       {  loading ? 
+       <p  className={`${Styles.FontOvo} font-semibold text-1xl ${themeValue ? 'text-black' : 'text-white'} `}>Loading</p> 
+      : getDescriptionBySection('workShot')   }
+      </div>
 
        <div  className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] my-8 gap-5'>
       {workData.slice(0, 4).map((project, index) => (

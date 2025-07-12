@@ -1,7 +1,8 @@
 import { Outfit, Ovo } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeContext} from "@/Context/ThemeContext";
+import { ThemeContext} from "../Context/ThemeContext";
+import {DescriptionContext} from '../Context/DescriptionContext'
 
 
 
@@ -30,7 +31,9 @@ export default function RootLayout({
           `}
           
       ><ThemeContext>
+        <DescriptionContext>
         {children}
+        </DescriptionContext>
       </ThemeContext>
       </body>
     </html>

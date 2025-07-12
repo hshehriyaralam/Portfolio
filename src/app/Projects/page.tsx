@@ -1,15 +1,25 @@
-import React from 'react'
+'use client'
+
+import React, { useContext } from 'react'
 import { assets, workData } from '../../assets/assets'
 import Image from 'next/image'
 import Styles from '../../Styles/styles.module.css'
+import { ContextDescription } from '../../Context/DescriptionContext'
+import { ContextTheme } from '../../Context/ThemeContext'
 
 
 export default  function  AllProject(){
+  const {getDescriptionBySection,loading} = useContext(ContextDescription)
+  const {themeValue} = useContext(ContextTheme)
+  
   return (
     <div  className='w-full px-[12%] py-8 scroll-mt-20'>
       <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>All Projects</h2>
-       <p className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `} >Explore my projects showcasing skills in Frontend, Backend, and Full Stack Development. Each reflects my focus on building scalable, responsive, and user-friendly applications with modern technologies.</p>
-
+       <div className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `} >
+       {  loading ? 
+       <p  className={`${Styles.FontOvo} font-semibold text-1xl ${themeValue ? 'text-black' : 'text-white'} `}>Loading</p> 
+      : getDescriptionBySection('workLong')   }
+      </div>
        <div  className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] my-8 gap-5'>
         {workData.map((project, index) => (
   <div

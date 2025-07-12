@@ -2,12 +2,17 @@ import { assets } from '@/assets/assets.js'
 import Image from 'next/image'
 import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
-import { ContextTheme } from '@/Context/ThemeContext'
+import { ContextTheme } from '../Context/ThemeContext'
+import { ContextDescription } from "../Context/DescriptionContext"
 
 
 
 export default function Hero ()  {
     const {themeValue} = useContext(ContextTheme)
+    const {getDescriptionBySection,loading} = useContext(ContextDescription)
+
+   
+    
   
   return (
     <div className='w-11/12 max-w-3xl pt-50  md:pt-20  text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 '>
@@ -20,9 +25,11 @@ export default function Hero ()  {
       <h1  className={`text-3xl md:text-4xl lg:text-[66px]${Styles.FontOvo} `}>
         MERN Stack Developer  
       </h1>
-      <p  className={`max-w-2xl mx-auto ${Styles.FontOvo} `} >
-       I’m a passionate MERN Stack Developer specializing in Frontend Development. Experienced in modern JavaScript frameworks to build responsive and high-performance web applications.
-      </p>
+      <div className={`max-w-2xl mx-auto ${Styles.FontOvo} `} >
+       {  loading ? 
+       <p  className={`${Styles.FontOvo} font-semibold text-1xl ${themeValue ? 'text-black' : 'text-white'} `}>Loading</p> 
+      : getDescriptionBySection('hero')   }
+      </div>
       <div  className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
         <a href="#contact"
         className={`px-8 py-2 border border-white rounded-full ${themeValue ? 'bg-black' : 'bg-transparent'}  bg-black text-white flex items-center gap-2 `}

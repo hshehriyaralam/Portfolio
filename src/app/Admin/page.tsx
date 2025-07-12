@@ -1,226 +1,119 @@
-"use client";
-import React, { useState, useContext } from "react";
-import { ContextTheme } from "@/Context/ThemeContext";
-import { Pencil } from "lucide-react";
-import Styles from "../../Styles/styles.module.css";
+'use client'
+import styles from '../../Styles/styles.module.css'
+import { ContextTheme } from '../../Context/ThemeContext'
+import { ContextDescription } from '../../Context/DescriptionContext'
+import React, { useContext } from 'react'
 
 export default function Admin() {
-  const { themeValue } = useContext(ContextTheme);
+  const { themeValue } = useContext(ContextTheme)
+  const {  loading, getDescriptionBySection } = useContext(ContextDescription)
 
-  // Descriptions
-  const [descriptions, setDescriptions] = useState({
-    hero:
-      "I’m a passionate MERN Stack Developer specializing in Frontend Development. Experienced in modern JavaScript frameworks to build responsive and high-performance web applications.",
-    about:
-      "I’m a passionate MERN and Next.js Developer specializing in Frontend Development. Skilled in modern JavaScript frameworks and UI libraries like Shadcn, Magic UI, ReactBits, and Tailwind CSS to build responsive and high-performance web applications.",
-    workShort:
-      "Showcasing my best projects built with modern technologies to solve real-world problems effectively.",
-    workLong:
-      "Explore my projects showcasing skills in Frontend, Backend, and Full Stack Development. Each reflects my focus on building scalable, responsive, and user-friendly applications with modern technologies.",
-  });
-
-  // Which section is in edit mode
-  const [editingKey, setEditingKey] = useState<keyof typeof descriptions | null>(
-    null
-  );
-
-  // Temporary edited value
-  const [tempValue, setTempValue] = useState("");
-
-  const handleEdit = (key: keyof typeof descriptions) => {
-    setEditingKey(key);
-    setTempValue(descriptions[key]);
-  };
-
-  const handleCancel = () => {
-    setEditingKey(null);
-    setTempValue("");
-  };
-
-  const handleUpdate = () => {
-    if (editingKey) {
-      setDescriptions((prev) => ({
-        ...prev,
-        [editingKey]: tempValue,
-      }));
-      setEditingKey(null);
-      setTempValue("");
-    }
-  };
-
-  const sectionClasses = `border-[0.5px] ${
-    themeValue ? "border-gray-400" : "border-gray-700"
-  } rounded-xl p-6`;
-
-  const textClasses = `${themeValue ? "text-gray-900" : "text-gray-200"} ${
-    Styles.FontOvo
-  }`;
+  // Loading state
+  if (loading) {
+    return <div className={` w-full h-screen flex justify-center items-center text-4xl font-bold ${themeValue ? 'bg-gray-100' : 'bg-gray-900  text-white'}  ${styles.FontOvo}   `}>Loading...</div>
+  }
 
   return (
     <div
-      className={`w-full min-h-screen px-[12%] py-10 ${
-        themeValue ? "" : Styles.DarkTheme
-      }`}
+      className={`w-full min-h-screen px-[12%] py-10 ${themeValue ? 'bg-gray-100' : 'bg-gray-900'} ${styles.FontOvo}`}
     >
       <h1
-        className={`text-3xl font-semibold mb-8 text-center ${
-          themeValue ? "text-gray-800" : "text-white"
-        } ${Styles.FontOvo}`}
+        className={`text-center text-4xl font-bold mb-10 ${
+          themeValue ? 'text-gray-800' : 'text-gray-100'
+        }`}
       >
-        Admin Panel
+        Admin
       </h1>
-
-      {/* Sections */}
-      <div className="grid gap-8 mb-4">
-        {(
-          [
-            ["hero", "✨ Hero Section Description"],
-            ["about", "💡 About Section Description"],
-            ["workShort", "📝 Work Short Description"],
-            ["workLong", "📘 Work Long Description"],
-          ] as [keyof typeof descriptions, string][]
-        ).map(([key, label]) => (
-          <section key={key} className={sectionClasses}>
-            <div className="flex justify-between items-start">
-              <h2
-                className={`text-xl mb-2 ${
-                  themeValue ? "text-gray-800" : "text-gray-300"
-                }`}
-              >
-                {label}
-              </h2>
-              {editingKey !== key && (
-                <button
-                  onClick={() => handleEdit(key)}
-                  className="hover:text-purple-500 transition"
-                  title="Edit"
-                >
-                  <Pencil size={20} />
-                </button>
-              )}
-            </div>
-
-            {editingKey === key ? (
-              <textarea
-                rows={3}
-                value={tempValue}
-                onChange={(e) => setTempValue(e.target.value)}
-                className={`w-full p-3 rounded-md border ${
-                  themeValue
-                    ? "border-gray-300 focus:ring-purple-400"
-                    : "border-gray-600 bg-transparent text-white focus:ring-purple-700"
-                } focus:outline-none focus:ring-2`}
-              />
-            ) : (
-              <p className={textClasses}>{descriptions[key]}</p>
-            )}
-          </section>
-        ))}
-      </div>
-
-      {/* Global Update/Cancel Buttons */}
-      {editingKey && (
-        <div className="flex gap-x-4 items-center justify-center ">
-          <button
-            onClick={handleUpdate}
-            className="bg-gray-500 text-white p-2  rounded-xl hover:bg-gray-800 transition"
-          >
-            Update
-          </button>
-          <button
-            onClick={handleCancel}
-            className="bg-purple-500 text-white p-2  rounded-xl hover:bg-purple-800 transition"
-          >
-            Cancel
-          </button>
-        </div>
-      )}
-
-{/* === Add Project Form === */}
-      <section
-        className={`mt-12 border-[0.5px] ${
-          themeValue ? "border-gray-400" : "border-gray-700"
-        } rounded-xl p-6 `}
+      <div
+        className={`grid grid-cols-1 md:grid-cols-2 gap-8`}
       >
-        <h2
-          className={`text-xl mb-4 ${
-            themeValue ? "text-gray-800" : "text-gray-300"
+        {/* Hero Section */}
+        <div
+          className={`border rounded-xl p-6 shadow-md hover:-translate-y-1 duration-500 ${
+            themeValue ? 'border-gray-300 bg-white' : 'border-gray-700 bg-gray-800'
           }`}
         >
-          ➕ Add New Project
-        </h2>
-        <form
-   
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-        >
-          <input
-            type="text"
-            name="title"
-            placeholder="Project Title"
-   
-            required
-            className={`p-3 rounded-md border ${
-              themeValue
-                ? "border-gray-300"
-                : "border-gray-600 bg-transparent text-white"
+          <h2
+            className={`text-xl font-semibold mb-2 ${
+              themeValue ? 'text-gray-700' : 'text-gray-200'
             }`}
-          />
-          <input
-            type="text"
-            name="description"
-            placeholder="Description"
-
-            required
-            className={`p-3 rounded-md border ${
-              themeValue
-                ? "border-gray-300"
-                : "border-gray-600 bg-transparent text-white"
-            }`}
-          />
-          <input
-            type="file"
-            name="bgImage"
-            placeholder="Background Image URL"
-            required
-            className={`p-3 rounded-md border ${
-              themeValue
-                ? "border-gray-300"
-                : "border-gray-600 bg-transparent text-white"
-            }`}
-          />
-          <input
-            type="url"
-            name="githubLink"
-            placeholder="GitHub Link"
-
-            required
-            className={`p-3 rounded-md border ${
-              themeValue
-                ? "border-gray-300"
-                : "border-gray-600 bg-transparent text-white"
-            }`}
-          />
-          <input
-            type="url"
-            name="liveDemoLink"
-            placeholder="Live Demo Link"
-
-            required
-            className={`p-3 rounded-md border ${
-              themeValue
-                ? "border-gray-300"
-                : "border-gray-600 bg-transparent text-white"
-            }`}
-          />
-          <button
-            type="submit"
-            className="sm:col-span-2 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition"
           >
-            Add Project
-          </button>
-        </form>
-      </section>
-      
+            Hero Section Description
+          </h2>
+          <p
+            className={`text-sm ${
+              themeValue ? 'text-gray-800' : 'text-gray-300'
+            }`}
+          >
+            {getDescriptionBySection('hero')}
+          </p>
+        </div>
+        {/* About Section */}
+        <div
+          className={`border rounded-xl p-6 shadow-md hover:-translate-y-1 duration-500 ${
+            themeValue ? 'border-gray-300 bg-white' : 'border-gray-700 bg-gray-800'
+          }`}
+        >
+          <h2
+            className={`text-xl font-semibold mb-2 ${
+              themeValue ? 'text-gray-700' : 'text-gray-200'
+            }`}
+          >
+            About Section Description
+          </h2>
+          <p
+            className={`text-sm ${
+              themeValue ? 'text-gray-800' : 'text-gray-300'
+            }`}
+          >
+            {getDescriptionBySection('about')}
+          </p>
+        </div>
+
+        {/* Work Short Section */}
+        <div
+          className={`border rounded-xl p-6 shadow-md hover:-translate-y-1 duration-500 ${
+            themeValue ? 'border-gray-300 bg-white' : 'border-gray-700 bg-gray-800'
+          }`}
+        >
+          <h2
+            className={`text-xl font-semibold mb-2 ${
+              themeValue ? 'text-gray-700' : 'text-gray-200'
+            }`}
+          >
+            Work Short Section Description
+          </h2>
+          <p
+            className={`text-sm ${
+              themeValue ? 'text-gray-800' : 'text-gray-300'
+            }`}
+          >
+            {getDescriptionBySection('workShort')}
+          </p>
+        </div>
+
+        {/* Work Long Section */}
+        <div
+          className={`border rounded-xl p-6 shadow-md hover:-translate-y-1 duration-500 ${
+            themeValue ? 'border-gray-300 bg-white' : 'border-gray-700 bg-gray-800'
+          }`}
+        >
+          <h2
+            className={`text-xl font-semibold mb-2 ${
+              themeValue ? 'text-gray-700' : 'text-gray-200'
+            }`}
+          >
+            Work Long Section Description
+          </h2>
+          <p
+            className={`text-sm ${
+              themeValue ? 'text-gray-800' : 'text-gray-300'
+            }`}
+          >
+            {getDescriptionBySection('workLong')}
+          </p>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
