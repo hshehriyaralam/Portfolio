@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { Description } from "../../lib/Models/Description";
 import { connectDB } from "../../lib/dbConnect";
+import { exportTraceState } from "next/dist/trace";
 
 
 
@@ -31,4 +32,32 @@ export async function POST(req:NextRequest){
     }catch(error){
     return Response.json({success : false, error }, {status : 500})
     }
+}
+
+
+export async function PUT(req : NextRequest){
+    try{
+        const body = await req.json();
+        const {section, text} = body;
+
+        if(!section || !text){
+            return NextResponse.json({success : false, error : "Sections and Text Are Required"}, {status : 400})
+        }
+
+
+        await connectDB()
+        //update descripitions
+        const updated = await Description.findOneAndUpdate(
+            {section},
+            {text},
+            {new : true, upsert : true}
+        )
+
+        
+        return NextResponse.json({success : true, data : updated })
+    }catch(error){
+    return Response.json({success : false, error }, {status : 500})
+        
+    }
+
 }

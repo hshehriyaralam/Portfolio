@@ -1,5 +1,8 @@
 'use client'
 
+import { strict } from "assert";
+import { log } from "console";
+import { Section } from "lucide-react";
 import React, { createContext, ReactNode, useEffect, useState } from "react"
 
 interface Description {
@@ -16,6 +19,7 @@ interface DescriptionContextType {
     getDescription : () => Promise<void>
     addDescription: (section: string, text: string) => Promise<void>;
     getDescriptionBySection: (sectionName: string) => string; 
+    updateDescription : (section : string, text : string) => Promise <void>
 }
 
 
@@ -26,7 +30,8 @@ export const ContextDescription = createContext<DescriptionContextType>({
     loading : false,
     getDescription : async () => {},
     addDescription : async () => {},
-    getDescriptionBySection :  (sectionName : string) => ''
+    getDescriptionBySection :  (sectionName : string) => '',
+    updateDescription : async () => {}
 })
 
 
@@ -86,6 +91,35 @@ export const DescriptionContext = ({children} :DescriptionProviderProps ) => {
    }
 
 
+   // Update Descriptions
+   const updateDescription = async (section :string, text : string) => {
+    try{
+        setLoading(true)
+        const res = await fetch('/api/Description', {
+            method : "PUT",
+            headers : {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ section, text }),
+        });
+        if(!res.ok){
+            throw new Error("Failed to update description");
+        }
+
+        // const updated = await res.json()
+        setDescription((prev) => 
+        prev.map((desc) => 
+        desc.section === section ? {...desc, text} : desc
+        )
+        )
+        
+    }catch(error){
+        console.error("Error updating description:", error);
+    }finally{
+        setLoading(false)
+    }
+    
+   }
 
 
    // Descriptions filterd by sections 
@@ -100,7 +134,7 @@ export const DescriptionContext = ({children} :DescriptionProviderProps ) => {
         getDescription()
     },[])
 
-   const All = {descriptions,loading, getDescription,addDescription,getDescriptionBySection}
+   const All = {descriptions,loading, getDescription,addDescription,getDescriptionBySection,updateDescription}
 
     return <ContextDescription.Provider  value={All}  >
         {children}

@@ -7,13 +7,17 @@ import { Pencil } from 'lucide-react'
 
 export default function Admin() {
   const { themeValue } = useContext(ContextTheme)
-  const { loading, getDescriptionBySection } = useContext(ContextDescription)
+  const { loading, getDescriptionBySection,updateDescription } = useContext(ContextDescription)
   const [editingSection, setEditingSection] = useState<string | null>(null)
   const [heroValue, setHeroValue] = useState<string>('')
   const [aboutValue, setAboutValue] = useState<string>('')
   const [workShortValue, setWorkShortValue] = useState<string>('')
   const [workLongValue, setWorkLongValue] = useState<string>('')
   
+
+  const handleUpdate =  async () => {
+    
+  }
 
   // Loading state
   if (loading) {
@@ -158,8 +162,9 @@ export default function Admin() {
             {editingSection !== 'workShort' && (
               <Pencil
                  onClick={() => {
-                  setWorkShortValue(getDescriptionBySection('workShort'))
-                  setEditingSection('workShort')}}
+                  setWorkShortValue(getDescriptionBySection('workShot'))
+                  setEditingSection('workShot')
+                }}
                 
                 size={18}
                 className={`${
@@ -168,7 +173,7 @@ export default function Admin() {
               />
             )}
           </div>
-          {editingSection === 'workShort' ? (
+          {editingSection === 'workShot' ? (
             <input
               className={`text-md px-3 py-3 rounded-md border outline-none w-full max-w-md ${
                 themeValue
@@ -249,6 +254,7 @@ export default function Admin() {
           </button>
           <button
             className="p-2 bg-purple-300 rounded-xl text-black font-semibold cursor-pointer"
+            onClick={handleUpdate}
           >
             Update
           </button>
