@@ -2,12 +2,12 @@
 import styles from '../../Styles/styles.module.css'
 import { ContextTheme } from '../../Context/ThemeContext'
 import { ContextDescription } from '../../Context/DescriptionContext'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Pencil } from 'lucide-react'
 
 export default function Admin() {
   const { themeValue } = useContext(ContextTheme)
-  const { loading, getDescriptionBySection,updateDescription } = useContext(ContextDescription)
+  const { loading, getDescriptionBySection,updateDescription, getDescription} = useContext(ContextDescription)
   const [editingSection, setEditingSection] = useState<string | null>(null)
   const [heroValue, setHeroValue] = useState<string>('')
   const [aboutValue, setAboutValue] = useState<string>('')
@@ -16,9 +16,31 @@ export default function Admin() {
   
 
   const handleUpdate =  async () => {
+    try{
     
+      const section = String(editingSection)
+        let valueToUpdate = "";
+
+    if (section === "hero") {
+      valueToUpdate = heroValue;
+    } else if (section === "about") {
+      valueToUpdate = aboutValue;
+    } else if (section === "workShot") {
+      valueToUpdate = workShortValue;
+    } else if (section === "workLong") {
+      valueToUpdate = workLongValue;
+    }
+      await updateDescription( section,valueToUpdate  )
+
+      setEditingSection(null)
+      
+    }catch(error){
+      console.log("Description update failed", error)
+    }
   }
 
+
+  
   // Loading state
   if (loading) {
     return (
@@ -31,6 +53,8 @@ export default function Admin() {
       </div>
     )
   }
+
+
 
   return (
     <div

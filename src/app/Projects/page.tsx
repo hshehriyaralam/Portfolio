@@ -13,7 +13,7 @@ export default  function  AllProject(){
   const {themeValue} = useContext(ContextTheme)
   
   return (
-    <div  className='w-full px-[12%] py-8 scroll-mt-20'>
+    <div  className={`w-full min-h-screen px-[12%] py-8 scroll-mt-20 pt-20  ${themeValue ? 'bg-transparent' : `${Styles.DarkTheme}`} `}>
       <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>All Projects</h2>
        <div className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `} >
        {  loading ? 
