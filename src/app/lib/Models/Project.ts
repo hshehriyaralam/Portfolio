@@ -3,7 +3,7 @@ import mongoose,{Schema, model,models,Document} from "mongoose";
 
 export interface IProject extends Document {
     title : string,
-    descrition : string,
+    description : string,
     githubLink : string,
     LiveDemo  : string,
     readmeLink : string,
@@ -15,32 +15,24 @@ const projectShema = new Schema<IProject>({
     title : {
         type : String,
         required : true,
-        Unique : true
+        unique : true
     },
-    descrition: {
+    description: {
         type : String,
         required : true,
     },
     githubLink: {
         type : String,
         required : true,
-        Unique : true
     },
     LiveDemo: {
         type : String,
         required : true,
-        Unique : true
     },
     readmeLink: {
         type : String,
         required : true,
-    },
-    bgImage: {
-        type : String,
-        required : true,
-    },
-    
-    
+    }
 })
 
 

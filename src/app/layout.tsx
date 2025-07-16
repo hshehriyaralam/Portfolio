@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeContext} from "../Context/ThemeContext";
 import {DescriptionContext} from '../Context/DescriptionContext'
+import  {ProjectContext} from '../Context/ProjectContext'
 
 
 
@@ -31,9 +32,11 @@ export default function RootLayout({
           `}
           
       ><ThemeContext>
+        <ProjectContext>
         <DescriptionContext>
         {children}
         </DescriptionContext>
+        </ProjectContext>
       </ThemeContext>
       </body>
     </html>

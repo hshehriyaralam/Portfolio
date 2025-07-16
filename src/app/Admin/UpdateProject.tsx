@@ -1,12 +1,14 @@
 'use client';
 import { ContextTheme } from "../../Context/ThemeContext";
 import { ContextDescription } from '../../Context/DescriptionContext';
+import { ContextProject } from "../../Context/ProjectContext"
 import { useContext, useState } from "react";
 import styles from '../../Styles/styles.module.css';
 
 export default function UpdateProject() {
   const { themeValue } = useContext(ContextTheme);
   const { loading } = useContext(ContextDescription);
+  const {addProject}   = useContext(ContextProject)
   const [tittle, setTittle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [githubLink, setGithubLink] = useState<string>('')
@@ -26,8 +28,17 @@ export default function UpdateProject() {
     );
   }
 
-  const addProject = (e : any) => {
-    e.preventDefault()
+  const UpdateProject =  async () => {
+    try{
+      await addProject(tittle,description,githubLink,liveDemo,readmeLink)
+      setTittle('')
+      setDescription('')
+      setGithubLink('')
+      setLiveDemo('')
+      setReadmeLink('')
+    }catch(error){
+      console.log("Error");      
+    }
   }
 
   const inputBase = `border rounded-md py-2 px-3 w-full focus:outline-none transition-colors duration-300`;
@@ -87,7 +98,7 @@ export default function UpdateProject() {
 
         {/* Row 3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
+          {/* <input
             type="file"
             value={bgImage}
             onChange={(e) => setBgImage(e.target.value)}
@@ -96,7 +107,7 @@ export default function UpdateProject() {
                 ? 'file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100'
                 : 'file:bg-gray-700 file:text-gray-100 hover:file:bg-gray-600'
             }`}
-          />
+          /> */}
           <input
             type="text"
             placeholder="Readme Link"
@@ -109,8 +120,8 @@ export default function UpdateProject() {
         {/* Button */}
         <div className="flex justify-center pt-4">
           <button
-          onClick={addProject}
-            type="submit"
+          type="button"
+          onClick={UpdateProject}
             className={`py-2 px-8 sm:px-10 text-sm sm:text-base flex items-center justify-center gap-2 ${
               themeValue
                 ? 'bg-black/80'

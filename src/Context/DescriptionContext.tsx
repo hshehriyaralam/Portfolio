@@ -101,8 +101,6 @@ export const DescriptionContext = ({children} :DescriptionProviderProps ) => {
         if(!res.ok){
             throw new Error("Failed to update description");
         }
-
-        // const updated = await res.json()
         setDescription((prev) => 
         prev.map((desc) => 
         desc.section === section ? {...desc, text} : desc

@@ -16,3 +16,22 @@ export async function GET(req: NextRequest){
         return Response.json({success : false, error }, {status : 500})
     }
 }
+
+
+
+export async function POST(req:NextRequest){
+    try{
+        const body = await req.json()
+        const {title,description,githubLink,LiveDemo,readmeLink} = body;
+
+        if(!title || !description || !githubLink || !LiveDemo || !readmeLink){
+            return NextResponse.json({success : false, error : "Missing Field"}, {status : 400})
+        }
+
+        const created = await Project.create({title,description,githubLink,LiveDemo,readmeLink})
+        return NextResponse.json({success : true, data : created })
+
+    }catch(error){
+        return Response.json({success : false, error }, {status : 500})
+    }
+}
