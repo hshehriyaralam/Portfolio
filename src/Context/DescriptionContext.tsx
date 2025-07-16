@@ -1,8 +1,4 @@
 'use client'
-
-import { strict } from "assert";
-import { log } from "console";
-import { Section } from "lucide-react";
 import React, { createContext, ReactNode, useEffect, useState } from "react"
 
 interface Description {
