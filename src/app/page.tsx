@@ -15,7 +15,7 @@ import Styles from '../Styles/styles.module.css'
 export default function Page() {
     const {themeValue,changeTheme} = useContext(ContextTheme)  
   return (
-    <div  className={`w-full h-min-screen ${themeValue ? 'bg-transparent' : Styles.DarkTheme    }`}>
+    <div  className={`w-full max-w-full h-min-screen ${themeValue ? 'bg-transparent' : Styles.DarkTheme    }`}>
       <Navbar />
       <Hero />
       <About />

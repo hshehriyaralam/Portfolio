@@ -1,5 +1,6 @@
 'use client'
 import React, { createContext, ReactNode, useEffect, useState } from "react"
+import {uploadImageToFirebase} from '../app/lib/Firebase/UploadImage'
 
 interface Project {
     _id : string,
@@ -63,16 +64,20 @@ export const ProjectContext = ({children} :ProjectProviderProps ) => {
     githubLink : String,
     LiveDemo : String,
     readmeLink : string,
+    bgImage: File | null
       ) => {
       try{
         setLoading(true)
-
+            let imageUrl : string | null = "";
+            if (bgImage) {
+              imageUrl = await uploadImageToFirebase(bgImage);
+            }
          const res = await fetch('/api/Project', {
             method : "POST",
             headers : {
               "Content-Type": "application/json",
             },
-            body : JSON.stringify({title,description,githubLink,LiveDemo,readmeLink,})
+            body : JSON.stringify({title,description,githubLink,LiveDemo,readmeLink,bgImage: imageUrl,})
         })
         const json = await res.json()
          if(json.success){

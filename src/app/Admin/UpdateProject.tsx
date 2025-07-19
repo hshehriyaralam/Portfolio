@@ -7,7 +7,7 @@ import styles from '../../Styles/styles.module.css';
 
 export default function UpdateProject() {
   const { themeValue } = useContext(ContextTheme);
-  const {addProject}   = useContext(ContextProject)
+  const {addProject,loading}   = useContext(ContextProject)
   const [tittle, setTittle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [githubLink, setGithubLink] = useState<string>('')
@@ -119,7 +119,7 @@ export default function UpdateProject() {
                 : 'bg-transparent border border-gray-700'
             } text-white rounded-full hover:bg-black duration-500`}
           >
-            Add Project
+            {loading ? 'Loading...' : 'add Project' }
           </button>
         </div>
       </form>

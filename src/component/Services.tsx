@@ -8,8 +8,10 @@ import { ContextTheme } from '@/Context/ThemeContext'
 
 export default function Services ()  {
       const {themeValue} = useContext(ContextTheme)
+
   return (
-    <div  id='services' className='w-full px-[12%] py-8 scroll-mt-20' >
+    <div  id='services' className='w-full px-[12%] py-8 scroll-mt-20' 
+    >
       <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>What I offer </h4>
       <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>My Services</h2>
       <p className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `}>I offer professional Frontend, Backend, and Full Stack Development services to build modern, scalable, and high-quality web applications tailored to your needs.</p>
@@ -28,6 +30,7 @@ export default function Services ()  {
             </a>
           </div>
         ))}
+
       </div>
     </div>
   )
