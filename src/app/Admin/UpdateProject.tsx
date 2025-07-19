@@ -7,35 +7,23 @@ import styles from '../../Styles/styles.module.css';
 
 export default function UpdateProject() {
   const { themeValue } = useContext(ContextTheme);
-  const { loading } = useContext(ContextDescription);
   const {addProject}   = useContext(ContextProject)
   const [tittle, setTittle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [githubLink, setGithubLink] = useState<string>('')
   const [liveDemo, setLiveDemo] = useState<string>('')
   const [readmeLink, setReadmeLink] = useState<string>('')
-  const [bgImage, setBgImage]  = useState<string>('')
-
-  if (loading) {
-    return (
-      <div
-        className={`w-full min-h-screen flex justify-center items-center text-4xl font-bold ${
-          themeValue ? 'bg-gray-100' : 'bg-gray-900 text-white'
-        } ${styles.FontOvo}`}
-      >
-        Loading...
-      </div>
-    );
-  }
+  const [bgImage, setBgImage]  = useState<File | null>(null)
 
   const UpdateProject =  async () => {
     try{
-      await addProject(tittle,description,githubLink,liveDemo,readmeLink)
+      await addProject(tittle,description,githubLink,liveDemo,readmeLink,bgImage)
       setTittle('')
       setDescription('')
       setGithubLink('')
       setLiveDemo('')
       setReadmeLink('')
+      setBgImage(null)
     }catch(error){
       console.log("Error");      
     }
@@ -98,16 +86,19 @@ export default function UpdateProject() {
 
         {/* Row 3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* <input
-            type="file"
-            value={bgImage}
-            onChange={(e) => setBgImage(e.target.value)}
+          <input
+             type="file"
+              onChange={(e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                  setBgImage(e.target.files[0]);
+                }
+              }}
             className={`border rounded-md py-2 px-3 w-full file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold ${
               themeValue
                 ? 'file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100'
                 : 'file:bg-gray-700 file:text-gray-100 hover:file:bg-gray-600'
             }`}
-          /> */}
+          />
           <input
             type="text"
             placeholder="Readme Link"

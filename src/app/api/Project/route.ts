@@ -22,13 +22,13 @@ export async function GET(req: NextRequest){
 export async function POST(req:NextRequest){
     try{
         const body = await req.json()
-        const {title,description,githubLink,LiveDemo,readmeLink} = body;
+        const {title,description,githubLink,LiveDemo,readmeLink, bgImage} = body;
 
-        if(!title || !description || !githubLink || !LiveDemo || !readmeLink){
+        if(!title || !description || !githubLink || !LiveDemo || !readmeLink  || typeof bgImage !== 'string' || bgImage.trim() === ''){
             return NextResponse.json({success : false, error : "Missing Field"}, {status : 400})
         }
 
-        const created = await Project.create({title,description,githubLink,LiveDemo,readmeLink})
+        const created = await Project.create({title,description,githubLink,LiveDemo,readmeLink,bgImage})
         return NextResponse.json({success : true, data : created })
 
     }catch(error){

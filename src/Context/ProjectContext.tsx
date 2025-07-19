@@ -10,6 +10,7 @@ interface Project {
     githubLink : string,
     LiveDemo : string,
     readmeLink : string,
+    bgImage: string;
 }
 
 interface ProjectContextType {
@@ -17,7 +18,7 @@ interface ProjectContextType {
     loading : boolean,
     getProject : () => Promise<void>
     addProject : 
-    ( title : string, description : string,githubLink : string,LiveDemo : string,readmeLink : string,)  => Promise<void>
+    ( title : string, description : string,githubLink : string,LiveDemo : string,readmeLink : string,bgImage: File | null,  )  => Promise<void>
 }
 
 
@@ -25,7 +26,7 @@ export const  ContextProject = createContext<ProjectContextType>({
     project : [],
     loading : false,
     getProject : async () => {},
-    addProject : async ( title : string, description : string,githubLink : string,LiveDemo : string,readmeLink : string,) => {},
+    addProject : async ( title : string, description : string,githubLink : string,LiveDemo : string,readmeLink : string, bgImage: File | null, ) => {},
 })
 
 interface ProjectProviderProps {
@@ -62,20 +63,21 @@ export const ProjectContext = ({children} :ProjectProviderProps ) => {
     githubLink : String,
     LiveDemo : String,
     readmeLink : string,
-    ) => {
+      ) => {
       try{
         setLoading(true)
+
          const res = await fetch('/api/Project', {
             method : "POST",
             headers : {
               "Content-Type": "application/json",
             },
-            body : JSON.stringify({title,description,githubLink,LiveDemo,readmeLink})
+            body : JSON.stringify({title,description,githubLink,LiveDemo,readmeLink,})
         })
         const json = await res.json()
          if(json.success){
             console.log("Project added successfully", json.data)
-            setProject(json)
+            setProject(prev => [...prev, json.data]);
             
         }else{
             console.error("Error adding Project:", json.error);

@@ -32,6 +32,10 @@ const projectShema = new Schema<IProject>({
     readmeLink: {
         type : String,
         required : true,
+    },
+    bgImage : {
+        type : String,
+        default : ''
     }
 })
 
