@@ -1,18 +1,36 @@
 'use client';
 import React, { useContext, useState } from 'react';
+import { useRouter } from "next/navigation";
 import { ContextTheme } from '../../Context/ThemeContext'
 import Styles from '../../Styles/styles.module.css';
+
 
 export default function LoginForm() {
   const { themeValue } = useContext(ContextTheme);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async  (e: React.FormEvent) => {
     e.preventDefault();
-    // Yahan apna login logic likhen
-    console.log('Email:', email);
-    console.log('Password:', password);
+
+    const res = await fetch("/api/Login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem("token", data.token);
+      alert("Login successful");
+      router.push("/Admin"); 
+    } else {
+      alert(data.message || "Login failed");
+    }
   };
 
   return (
