@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken'
 export async function POST(req : any){
     try{
         const body = await req.json();
-        const {email,password} = req.body;
+        const {email,password} = body;
         if(!email || !password){
             return NextResponse.json({ error: "Email & password required" }, { status: 400 });
         }

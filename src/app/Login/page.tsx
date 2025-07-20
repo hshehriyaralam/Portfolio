@@ -9,11 +9,12 @@ export default function LoginForm() {
   const { themeValue } = useContext(ContextTheme);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false)
   const router = useRouter();
 
   const handleSubmit = async  (e: React.FormEvent) => {
     e.preventDefault();
-
+    setLoading(true)
     const res = await fetch("/api/Login", {
       method: "POST",
       headers: {
@@ -26,8 +27,8 @@ export default function LoginForm() {
 
     if (res.ok) {
       localStorage.setItem("token", data.token);
-      alert("Login successful");
       router.push("/Admin"); 
+      setLoading(false)
     } else {
       alert(data.message || "Login failed");
     }
@@ -43,7 +44,7 @@ export default function LoginForm() {
         onSubmit={handleSubmit}
         className={`w-full max-w-md border ${
           themeValue ? 'border-gray-300' : 'border-gray-600'
-        } rounded-2xl p-8 flex flex-col gap-4 ${Styles.ShadowBlack}`}
+        } rounded-2xl p-8 flex flex-col gap-4`}
       >
         <h2
           className={`text-2xl text-center font-semibold mb-4 ${
@@ -107,7 +108,7 @@ export default function LoginForm() {
               : 'bg-white text-gray-900 hover:bg-gray-300'
           } duration-300`}
         >
-          Login
+          {loading ? 'Loading...' : 'Login'}
         </button>
       </form>
     </div>
