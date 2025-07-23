@@ -1,6 +1,5 @@
 'use client';
 import { ContextTheme } from "../../Context/ThemeContext";
-import { ContextDescription } from '../../Context/DescriptionContext';
 import { ContextProject } from "../../Context/ProjectContext"
 import { useContext, useState } from "react";
 import styles from '../../Styles/styles.module.css';

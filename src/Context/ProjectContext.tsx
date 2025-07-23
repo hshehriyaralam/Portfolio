@@ -1,6 +1,7 @@
 'use client'
 import React, { createContext, ReactNode, useEffect, useState } from "react"
-import {uploadImageToFirebase} from '../app/lib/Firebase/UploadImage'
+import {toBase64 } from '../utils/file'
+
 
 interface Project {
     _id : string,
@@ -68,16 +69,37 @@ export const ProjectContext = ({children} :ProjectProviderProps ) => {
       ) => {
       try{
         setLoading(true)
-            let imageUrl : string | null = "";
-            if (bgImage) {
-              imageUrl = await uploadImageToFirebase(bgImage);
-            }
+        let imageURL = ''
+        if(bgImage){
+          // convert image format tp API suitable format
+          const base64Image = await toBase64(bgImage)
+
+          // POST image in Cloudinary
+          const cloudRes = await fetch('/api/upload', {
+            method : 'POST',
+            headers : {
+              'Content-Type': 'application/json',
+            },
+            body : JSON.stringify({file : base64Image})
+          })
+
+          // get image URL from cloudinary
+          const cloudData = await cloudRes.json()
+          if(!cloudRes.ok){
+            const errorText = await cloudRes.text()
+             throw new Error(cloudData.error);
+          }
+          imageURL = cloudData.url
+
+        }
+
+
          const res = await fetch('/api/Project', {
             method : "POST",
             headers : {
               "Content-Type": "application/json",
             },
-            body : JSON.stringify({title,description,githubLink,LiveDemo,readmeLink,bgImage: imageUrl,})
+            body : JSON.stringify({title,description,githubLink,LiveDemo,readmeLink,bgImage  : imageURL })
         })
         const json = await res.json()
          if(json.success){

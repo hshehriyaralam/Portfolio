@@ -7,6 +7,7 @@ import Styles from '../../Styles/styles.module.css'
 import { ContextDescription } from '../../Context/DescriptionContext'
 import { ContextTheme } from '../../Context/ThemeContext'
 import { ContextProject } from '@/Context/ProjectContext'
+import Link from 'next/link'
 
 
 export default  function  AllProject(){
@@ -22,41 +23,56 @@ export default  function  AllProject(){
        <p  className={`${Styles.FontOvo} font-semibold text-1xl ${themeValue ? 'text-black' : 'text-white'} `}>Loading</p> 
       : getDescriptionBySection('workLong')   }
       </div>
-<div className="flex flex-wrap justify-center w-full gap-10 max-w-8xl mx-auto">
+<div className="flex flex-wrap justify-center w-full gap-10 max-w-8xl mx-auto ">
   {project.length === 0 ? (
     <p className="text-center text-xl font-semibold text-gray-500">No projects found.</p>
   ) : (
     project.map((project, index) => (
-      <div
-        key={index}
-        className="w-[90%] sm:w-[95%] md:w-[100%] max-w-[250px] aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
-        style={{ backgroundImage: `url(${project.bgImage})` }}
-      >
-        <div className="bg-white border border-gray-300 w-11/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-2 px-2 flex items-center justify-between duration-500 group-hover:bottom-7">
-          <div className="pr-2">
-            <h2 className="font-semibold text-black text-[15px]">{project.title}</h2>
-            <p className="text-sm text-gray-900">{project.description}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`border rounded-full border-black w-9 aspect-square flex items-center justify-center hover:bg-gray-400 transition ${Styles.ShadowWhite}`}
-            >
-              <Image src={assets.github_icon} alt="GitHub" className="w-4" />
-            </a>
-            <a
-              href={project.LiveDemo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`border rounded-full border-black w-9 aspect-square flex items-center justify-center hover:bg-lime-300 transition ${Styles.ShadowWhite}`}
-            >
-              <Image src={assets.send_icon} alt="Live Demo" className="w-4" />
-            </a>
-          </div>
-        </div>
+   <div
+   key={index}
+   className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      {/* Project Image */}
+      <div className="relative h-48 w-full">
+        <Image
+          src={project.bgImage}
+          alt={project.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </div>
+
+      {/* Project Content */}
+      <div className="px-6 py-4">
+        {/* Project Title */}
+        <h3 className="font-bold text-xl mb-2 text-gray-800 dark:text-white">
+          {project.title}
+        </h3>
+
+        {/* Project Description */}
+        <p className="text-gray-600 dark:text-gray-300 text-base line-clamp-2">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum vitae aspernatur optio expedita consequatur ad amet earum odit, nemo error laborum veniam laudantium blanditiis explicabo unde iste perferendis odio asperiores.
+        </p>
+      </div>
+
+      {/* Buttons */}
+      <div className="px-6 pt-2 pb-4 flex flex-wrap gap-3">
+        <Link
+          href={project.LiveDemo}
+          target="_blank"
+          className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors duration-300"
+        >
+          Live Demo
+        </Link>
+        <Link
+          href={project.githubLink}
+          target="_blank"
+          className="inline-flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-500 text-white text-sm font-medium rounded-md transition-colors duration-300"
+        >
+          View Code
+        </Link>
+      </div>
+    </div>
     ))
   )}
 </div>
