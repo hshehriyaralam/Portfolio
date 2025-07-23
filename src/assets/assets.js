@@ -43,7 +43,11 @@ import nextjs_icon from './next-js-icon.png'
 import Shahmeer_logo from './Logo_Shahmeer.png'
 import SHahmeer_user from './Shahmeer_abou_image.jpg'
 import github_icon from './github_icon.png'
-
+import github_icon_white from './github_icon_white.png'
+import send_icon_white from './send_icon_white.png'
+import Shehriyar_logo  from './Shehriyar_logo.png'
+import Shehriyar_logo_white from './Shehriyar_logo_white.png'
+ 
 export const assets = {
     user_image,
     code_icon,
@@ -90,6 +94,10 @@ export const assets = {
     Shahmeer_logo,
     SHahmeer_user,
     github_icon,
+    github_icon_white,
+    send_icon_white,
+    Shehriyar_logo,
+    Shehriyar_logo_white
 };
 
 export const workData = [

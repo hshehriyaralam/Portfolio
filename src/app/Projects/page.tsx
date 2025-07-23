@@ -49,15 +49,15 @@ export default function AllProject() {
       {/* Project Cards Grid */}
       <div className="w-full">
         <div
-          className={`flex flex-wrap gap-8 justify-center lg:justify-start ${
+          className={`flex flex-wrap justify-center w-full gap-10 max-w-8xl mx-auto ${
             project.length < 4 ? 'justify-center' : ''
           }`}
         >
           {project.map((project, index) => (
             <div
               key={index}
-              className={`w-full sm:w-[48%] lg:w-[23%] transition-transform transform hover:scale-105 hover:shadow-xl rounded-2xl overflow-hidden border border-gray-200 ${
-                themeValue ? 'bg-white' : 'bg-[#111827] border border-gray-400'
+              className={`w-full sm:w-[48%] lg:w-[23%] transform transition-all duration-800 hover:-translate-y-2 rounded-2xl overflow-hidden border border-gray-200 ${
+                themeValue ? 'bg-gray-50' : 'bg-[#111827] border border-gray-400'
               }`}
             >
               {/* Project Image */}
@@ -76,38 +76,50 @@ export default function AllProject() {
                     themeValue ? 'text-gray-900' : 'text-white'
                   }`}
                 >
-                  {project.title.toLocaleUpperCase()}
+                  {project.title}
                 </h2>
 
                 <p
-                  className={`text-sm mb-4 ${
+                  className={`text-sm mb-2 ${
                     themeValue ? 'text-black font-normal' : 'text-gray-300'
                   }`}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, libero.
+                  {project.description}
       
                 </p>
 
-                {/* GitHub & Live Demo Buttons */}
-                  <div className="flex items-center  gap-4 ">
+                  <div className="flex items-center justify-end  gap-2 ">
             <a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className={`border rounded-full border-black w-9 aspect-square flex items-center justify-center hover:bg-gray-400 transition ${Styles.ShadowWhite}`}
+              className={`border-[0.2px] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-9 aspect-square flex items-center justify-center hover:bg-gray-400 transition ${Styles.ShadowWhite}`}
             >
-              <Image src={assets.github_icon} alt="GitHub" className="w-4" />
+              <Image src={themeValue ? assets.github_icon : assets.github_icon_white }   alt="GitHub" className="w-5" />
             </a>
             <a
               href={project.LiveDemo}
               target="_blank"
               rel="noopener noreferrer"
-              className={`border rounded-full border-black w-9 aspect-square flex items-center justify-center hover:bg-lime-300 transition ${Styles.ShadowWhite}`}
+              className={`border-[0.2] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-9 aspect-square flex items-center justify-center hover:bg-lime-300 transition ${Styles.ShadowWhite}`}
             >
-              <Image src={assets.send_icon} alt="Live Demo" className="w-4" />
+              <Image src={ themeValue ? assets.send_icon : assets.send_icon_white} alt="Live Demo" className="w-5" />
             </a>
           </div>
               </div>
+              <div className="mt-3 flex justify-center">
+    <Link href={project.readmeLink}>
+      <button
+        className={`px-4 py-1.5 rounded-full text-sm font-medium border ${
+          themeValue
+            ? 'text-black border-black hover:bg-black hover:text-white'
+            : 'text-white border-white hover:bg-white hover:text-black'
+        } transition duration-300`}
+      >
+        Read More
+      </button>
+    </Link>
+  </div>
             </div>
           ))}
         </div>

@@ -45,8 +45,8 @@ export default function Navbar ()  {
     
     >
         <a href="#top">
-            <Image alt='Logo'  src={ themeValue ? assets.logo : assets.logo_dark}
-            className='w-24 cursor-pointer mr-14 '
+            <Image alt='Logo'  src={ themeValue ? assets.Shehriyar_logo : assets.Shehriyar_logo_white}
+            className='w-32 cursor-pointer mr-14 '
             />
         </a>
 
