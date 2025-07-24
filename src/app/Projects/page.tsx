@@ -87,39 +87,40 @@ export default function AllProject() {
                   {project.description}
       
                 </p>
-
-                  <div className="flex items-center justify-end  gap-2 ">
+            <div  className='flex  items-center justify-between mt-4 '>
+            <div >
+            <Link href={project.readmeLink}>
+              <button
+                className={`px-2 py-1.5 rounded-xl text-sm font-normal border cursor-pointer ${
+                  themeValue
+                    ? 'text-black border-black hover:bg-black hover:text-white'
+                    : 'text-white border-white hover:bg-white hover:text-black'
+                } transition duration-300`}
+              >
+                Read More
+              </button>
+            </Link>
+          </div>
+            <div className="flex items-center justify-end  gap-2 ">
             <a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className={`border-[0.2px] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-9 aspect-square flex items-center justify-center hover:bg-gray-400 transition ${Styles.ShadowWhite}`}
+              className={`border-[0.2px] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-8 aspect-square flex items-center justify-center hover:bg-gray-400 transition ${Styles.ShadowWhite}`}
             >
-              <Image src={themeValue ? assets.github_icon : assets.github_icon_white }   alt="GitHub" className="w-5" />
+              <Image src={themeValue ? assets.github_icon : assets.github_icon_white }   alt="GitHub" className="w-4" />
             </a>
             <a
               href={project.LiveDemo}
               target="_blank"
               rel="noopener noreferrer"
-              className={`border-[0.2] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-9 aspect-square flex items-center justify-center hover:bg-lime-300 transition ${Styles.ShadowWhite}`}
+              className={`border-[0.2] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-8 aspect-square flex items-center justify-center hover:bg-lime-300 transition ${Styles.ShadowWhite}`}
             >
-              <Image src={ themeValue ? assets.send_icon : assets.send_icon_white} alt="Live Demo" className="w-5" />
+              <Image src={ themeValue ? assets.send_icon : assets.send_icon_white} alt="Live Demo" className="w-4" />
             </a>
           </div>
+                </div>
               </div>
-              <div className="mt-3 flex justify-center">
-    <Link href={project.readmeLink}>
-      <button
-        className={`px-4 py-1.5 rounded-full text-sm font-medium border ${
-          themeValue
-            ? 'text-black border-black hover:bg-black hover:text-white'
-            : 'text-white border-white hover:bg-white hover:text-black'
-        } transition duration-300`}
-      >
-        Read More
-      </button>
-    </Link>
-  </div>
             </div>
           ))}
         </div>
