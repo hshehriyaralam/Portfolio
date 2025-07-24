@@ -5,6 +5,8 @@ import Styles from '../Styles/styles.module.css'
 import { ContextTheme } from '../Context/ThemeContext'
 import { ContextDescription } from '../Context/DescriptionContext'
 import { ContextProject } from '../Context/ProjectContext'
+import {motion} from 'motion/react'
+
 
 import Link from 'next/link'
 
@@ -17,17 +19,40 @@ export default function Work ()  {
   
   
   return (
-    <div id='work'  className='w-full px-[12%] py-8 scroll-mt-20 '>
-      <h4 className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>My Portfolio</h4>
-      <h2 className={`text-center text-4xl ${Styles.FontOvo} `}>My latest work</h2>
+    <motion.div
+    initial={{opacity : 0}}
+    whileInView={{opacity : 1}}
+    transition={{duration : 1}}
+    id='work'  className='w-full px-[12%] py-8 scroll-mt-20 '>
+      <motion.h4
+          initial={{opacity : 0, y:-20}}
+          whileInView={{opacity : 1, y:0}}
+          transition={{duration : 0.5, delay : 0.3}}
+       className={`text-center mb-2 text-lg ${Styles.FontOvo} `}>My Portfolio</motion.h4>
+      <motion.h2
+    initial={{opacity : 0, y:-20}}
+    whileInView={{opacity : 1, y:0}}
+    transition={{duration : 0.5, delay : 0.5}}
+      className={`text-center text-4xl ${Styles.FontOvo} `}>My latest work</motion.h2>
        <div className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo} `} >
        {  loading ? 
-       <p  className={`${Styles.FontOvo} font-semibold text-1xl ${themeValue ? 'text-black' : 'text-white'} `}>Please wait...</p> 
+       <motion.p
+          initial={{opacity : 0, y:-20}}
+          whileInView={{opacity : 1, y:0}}
+          transition={{duration : 0.5, delay : 0.7}}
+       className={`${Styles.FontOvo} font-semibold text-1xl ${themeValue ? 'text-black' : 'text-white'} `}>Please wait...</motion.p> 
       : getDescriptionBySection('workShot')   }
       </div>
-<div className="flex flex-wrap justify-center w-full gap-10 max-w-8xl mx-auto">
+<motion.div 
+         initial={{opacity : 0}}
+          whileInView={{opacity : 1}}
+          transition={{duration : 0.6, delay : 0.9}}
+
+className="flex flex-wrap justify-center w-full gap-10 max-w-8xl mx-auto">
   {project.map((project, index) => (
-      <div
+      <motion.div
+      whileHover={{scale : 1.05}}
+      transition={{duration : 0.3}}
               key={index}
               className={`w-full sm:w-[48%] lg:w-[23%] transform transition-all duration-800 hover:-translate-y-2 rounded-2xl overflow-hidden border border-gray-200 ${
                 themeValue ? 'bg-gray-40' : 'bg-[#111827] border border-gray-500'
@@ -95,15 +120,19 @@ export default function Work ()  {
           </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
     ))
   }
-</div>
-       <Link href={'./Projects'} className={`w-max flex items-center justify-center gap-2  border-[0.7px]  ${themeValue ?    'border-gray-700 text-gray-700 '   : 'border-gray-400 text-gray-400  '} rounded-full py-2 px-8 mx-auto  my-14 ${Styles.HoverLightHover}  duration-500`} >
+</motion.div>
+       <motion.a
+          initial={{opacity : 0}}
+          whileInView={{opacity : 1}}
+          transition={{duration : 0.5, delay : 1.1}}
+       href={'./Projects'} className={`w-max flex items-center justify-center gap-2  border-[0.7px]  ${themeValue ?    'border-gray-700 text-gray-700 '   : 'border-gray-400 text-gray-400  '} rounded-full py-2 px-8 mx-auto  my-14 ${Styles.HoverLightHover}  duration-500`} >
         Show More <Image  src={ themeValue ?  assets.right_arrow_bold  : assets.right_arrow_white}  alt='Right Arrow'
         className='w-4'  
         />
-       </Link>
-    </div>
+       </motion.a>
+    </motion.div>
   )
 }
