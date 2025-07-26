@@ -33,18 +33,18 @@ export default function Navbar ()  {
     })
   },[])
   return (
-    <>
+    <div>
     <div className={`fixed top-0 right-0 w-10/12 -z-10 translate-y-[-80%]`}>
     <Image  src={assets.header_bg_color } alt='Header_Bg'   className='w-full'/>
     </div>
-    <nav  className={`w-full fixed px-5  lg:px-8 xl:px-[8%] py-3 flex items-center justify-between z-50 
+    <nav  className={`w-full fixed px-5  lg:px-8 xl:px-[8%] md:py-3  py-5 flex items-center justify-between z-50 
     ${isScroll ?  `${themeValue ?  `bg-white bg-opacity-50 backdrop-blur-lg shadow-sm` : `${Styles.DarkTheme} border-b border-gray-500  `}` : `` }
     
     
     `}
     
     >
-        <a href="#top">
+        <a href="#top"> 
             <Image alt='Logo'  src={ themeValue ? assets.Shehriyar_logo : assets.Shehriyar_logo_white}
             className='w-32 cursor-pointer mr-14 '
             />
@@ -59,7 +59,7 @@ export default function Navbar ()  {
             <li><a className={`${Styles.FontOvo}`} href="#contact">Contact me</a></li>
         </ul>
 
-        <div className='flex items-center gap-4 ' >
+        <div className='flex items-center  gap-4 ' >
           <button onClick={changeTheme}  className='cursor-pointer'>
             <Image src={ themeValue ?  assets.moon_icon : assets.sun_icon} alt='Toggle' className='w-5' />
           </button>
@@ -84,7 +84,7 @@ export default function Navbar ()  {
             <li><a className={`${Styles.FontOvo}`} onClick={closeMenu} href="#contact">Contact me</a></li>
         </ul>
     </nav>
-    </>
+    </div>
   )
 }
 

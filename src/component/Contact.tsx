@@ -40,7 +40,7 @@ export default function Contact ()  {
     initial={{ y : -20, opacity : 0}}
     whileInView={{y:0,opacity : 1}}
     transition={{duration : 0.5, delay :  0.3}}
-    id='contact'  className={`w-full px-[10%] py-8 scroll-mt-20  ${themeValue ? `bg-[url("/footer-bg-color.png")]`   : 'bg-transparent' }   bg-no-repeat bg-center bg-[length : 90%_auto]`}>
+    id='contact'  className={`w-full px-[12%] py-8 scroll-mt-20  ${themeValue ? `bg-[url("/footer-bg-color.png")]`   : 'bg-transparent' }   bg-no-repeat bg-center bg-[length : 90%_auto]`}>
       <motion.h4
      initial={{ y : -20, opacity : 0}}
     whileInView={{y:0,opacity : 1}}
@@ -55,7 +55,7 @@ export default function Contact ()  {
      initial={{  opacity : 0}}
     whileInView={{opacity : 1}}
     transition={{duration : 0.5, delay :  0.7}}
-    className={`text-center max-w-2xl mx-auto mt-4 mb-6 ${Styles.FontOvo} `} >I'd love to hear from you! If you have any questions, comments, or feedback, please use the form below  </motion.p>
+    className={`text-center max-w-3xl mx-auto mt-4 mb-6 ${Styles.FontOvo} `} >I'd love to hear from you! If you have any questions, comments, or feedback, please use the form below  </motion.p>
 
        <motion.form 
      initial={{  opacity : 0}}
@@ -84,18 +84,18 @@ export default function Contact ()  {
             className={`flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md ${themeValue ? 'bg-white'  : 'bg-transparent '}`}            
             />
         </div>
-        <motion.textarea
-                initial={{ x : 100, opacity : 0}}
-                whileInView={{x:0,  opacity : 1}}
-                transition={{duration : 0.6, delay :  1.3}}
-        rows={6} placeholder='Enter your message' required
-        name='message'
-        className={`w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md  mb-4  ${themeValue ? 'bg-white'  : 'bg-transparent '} `}
-        ></motion.textarea>
+        
+        <textarea
+    
+                rows={6} placeholder='Enter your message' required
+                name='message'
+                className={`w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md  mb-4  ${themeValue ? 'bg-white'  : 'bg-transparent '} `}
+                ></textarea>
+              
         <motion.button 
         whileHover={{scale : 1.05}}
         transition={{duration : 0.3}}
-        className={`py-2 px-6 w-max flex items-center justify-between gap-2  ${themeValue ?  'bg-black/80 ' : 'bg-transparent border border-gray-700'}  text-white rounded-full mx-auto hover:bg-black duration-500 `}
+        className={`py-2 px-6  flex items-center justify-between gap-2  ${themeValue ?  'bg-black/80 ' : 'bg-transparent border border-gray-700'}  text-white rounded-full mx-auto hover:bg-black duration-500 `}
         type='submit' >Submit now <Image  src={assets.right_arrow_white} alt='right_arrow' className='w-4' /> </motion.button>
         <p className={`mt-4  ${themeValue ? 'text-gray-900' : 'text-gray-400'}  `} >{result}</p>
        </motion.form>

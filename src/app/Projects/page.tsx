@@ -77,9 +77,9 @@ export default function AllProject() {
               } flex flex-col justify-between min-h-[400px]`}
             >
               {/* Project Image */}
-              <div  >
+              <div className='bg-white'  >
                 <Image
-                  width={250}
+                  width={280}
                   height={170}
                   src={project.bgImage}
                   alt={project.title}

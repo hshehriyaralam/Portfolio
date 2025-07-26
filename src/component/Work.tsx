@@ -57,9 +57,9 @@ className="flex flex-wrap justify-center w-full gap-10 max-w-8xl mx-auto">
               } flex flex-col justify-between min-h-[350px]`}
             >
               {/* Project Image */}
-              <div  >
+              <div className='bg-white'  >
                 <Image
-                  width={250}
+                  width={280}
                   height={170}
                   src={project.bgImage}
                   alt={project.title}
