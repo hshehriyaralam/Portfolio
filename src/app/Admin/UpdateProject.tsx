@@ -1,8 +1,10 @@
 'use client';
 import { ContextTheme } from "../../Context/ThemeContext";
 import { ContextProject } from "../../Context/ProjectContext"
-import { useContext, useState } from "react";
+import { useContext, useState,useRef } from "react";
 import styles from '../../Styles/styles.module.css';
+import { useRouter } from "next/navigation";
+
 
 export default function UpdateProject() {
   const { themeValue } = useContext(ContextTheme);
@@ -13,16 +15,21 @@ export default function UpdateProject() {
   const [liveDemo, setLiveDemo] = useState<string>('')
   const [readmeLink, setReadmeLink] = useState<string>('')
   const [bgImage, setBgImage]  = useState<File | null>(null)
-
-  const UpdateProject =  async () => {
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const router = useRouter();
+  
+  
+  
+  const AddProject =  async () => {
     try{
       await addProject(tittle,description,githubLink,liveDemo,readmeLink,bgImage)
+      setBgImage(null)
       setTittle('')
       setDescription('')
       setGithubLink('')
       setLiveDemo('')
       setReadmeLink('')
-      setBgImage(null)
+      router.push('/#work')
     }catch(error){
       console.log("Error");      
     }
@@ -87,11 +94,12 @@ export default function UpdateProject() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
              type="file"
-              onChange={(e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                  setBgImage(e.target.files[0]);
-                }
-              }}
+              ref={fileInputRef}
+             onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                setBgImage(file);
+              }}}
             className={`border rounded-md py-2 px-3 w-full file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold ${
               themeValue
                 ? 'file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100'
@@ -111,7 +119,7 @@ export default function UpdateProject() {
         <div className="flex justify-center pt-4">
           <button
           type="button"
-          onClick={UpdateProject}
+          onClick={AddProject}
             className={`py-2 px-8 sm:px-10 text-sm sm:text-base flex items-center justify-center gap-2 ${
               themeValue
                 ? 'bg-black/80'

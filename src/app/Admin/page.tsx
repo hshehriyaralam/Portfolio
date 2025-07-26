@@ -2,7 +2,6 @@
 import UpdateDescription from "./UpdateDescription";
 import UpdateProject from "./UpdateProject";
 import { useRouter } from "next/navigation";
-import Cookies from 'js-cookie'
 import { useState, useEffect } from "react";
 
 

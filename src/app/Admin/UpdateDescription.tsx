@@ -4,6 +4,8 @@ import { ContextTheme } from '../../Context/ThemeContext'
 import { ContextDescription } from '../../Context/DescriptionContext'
 import React, { useContext, useEffect, useState } from 'react'
 import { Pencil } from 'lucide-react'
+import { useRouter } from "next/navigation";
+
 
 export default function UpdateDescription() {
   const { themeValue } = useContext(ContextTheme)
@@ -13,6 +15,8 @@ export default function UpdateDescription() {
   const [aboutValue, setAboutValue] = useState<string>('')
   const [workShortValue, setWorkShortValue] = useState<string>('')
   const [workLongValue, setWorkLongValue] = useState<string>('')
+   const router = useRouter();
+
   
 
   const handleUpdate =  async () => {
@@ -31,7 +35,7 @@ export default function UpdateDescription() {
       valueToUpdate = workLongValue;
     }
       await updateDescription( section,valueToUpdate  )
-
+      router.push('/')
       setEditingSection(null)
       
     }catch(error){
