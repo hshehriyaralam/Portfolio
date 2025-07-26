@@ -13,7 +13,9 @@ export default function Admin(){
      useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch('/api/authStatus')
+        const res = await fetch('/api/authStatus',{
+        credentials: 'include' 
+      })
         if (res.status === 200) {
           setLoading(false)
         } else {

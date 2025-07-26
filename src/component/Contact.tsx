@@ -1,8 +1,8 @@
-import { assets } from '@/assets/assets'
+import { assets } from '../assets/assets'
 import Image from 'next/image'
 import React, { useContext, useState } from 'react'
 import Styles from '../Styles/styles.module.css'
-import { ContextTheme } from '@/Context/ThemeContext'
+import { ContextTheme } from '../Context/ThemeContext'
 import {motion} from 'motion/react'
 
 

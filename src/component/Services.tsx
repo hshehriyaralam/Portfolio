@@ -1,4 +1,4 @@
-import { assets, serviceData } from '@/assets/assets'
+import { assets, serviceData } from '../assets/assets'
 import Image from 'next/image'
 import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
@@ -49,7 +49,7 @@ export default function Services ()  {
             <p className={`text-sm  leading-5  ${themeValue ? 'text-gray-900' : 'text-gray-400'} `} >
               {description}
             </p>
-            <a href={link} className='flex items-center gap-2 text-sm mt-5 ' >
+            <a href={link} target='_blank' className='flex items-center gap-2 text-sm mt-5 ' >
               Read more  <Image src={themeValue ? assets.right_arrow : assets.right_arrow_white} alt='right_arrow' className='w-4' />
             </a>
           </motion.div>

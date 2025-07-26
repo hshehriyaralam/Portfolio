@@ -46,14 +46,14 @@ export default function Work ()  {
           whileInView={{opacity : 1}}
           transition={{duration : 0.6, delay : 0.9}}
 
-className="flex flex-wrap justify-center w-full gap-10 max-w-8xl mx-auto">
-  {project.map((project, index) => (
+className="flex flex-wrap justify-center w-full gap-x-6 max-w-8xl mx-auto">
+  {project.slice(0,4).map((project, index) => (
         <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
               key={index}
               className={`w-full sm:w-[48%] lg:w-[23%] rounded-2xl overflow-hidden border border-gray-200 ${
-                themeValue ? 'bg-gray-50' : 'bg-[#111827] border border-gray-400'
+                themeValue ? 'bg-gray-50' : `${Styles.DarkTheme} border border-gray-400`
               } flex flex-col justify-between min-h-[350px]`}
             >
               {/* Project Image */}

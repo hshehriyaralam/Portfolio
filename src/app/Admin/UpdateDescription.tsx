@@ -50,7 +50,7 @@ export default function UpdateDescription() {
     return (
       <div
         className={`w-full h-screen flex justify-center items-center text-4xl font-bold ${
-          themeValue ? 'bg-gray-100' : 'bg-gray-900 text-white'
+          themeValue ? `bg-gray-100` : `${styles.DarkTheme}`
         } ${styles.FontOvo}`}
       >
         Loading...
@@ -63,7 +63,7 @@ export default function UpdateDescription() {
   return (
     <div
       className={`w-full  px-[12%] py-10 ${
-        themeValue ? 'bg-gray-100' : 'bg-gray-900'
+        themeValue ? `bg-gray-100` : `${styles.DarkTheme}`
       } ${styles.FontOvo}`}
     >
       <h1
@@ -78,7 +78,7 @@ export default function UpdateDescription() {
         {/* Hero Section */}
         <div
           className={`border rounded-xl p-6 shadow-md hover:-translate-y-1 duration-500 ${
-            themeValue ? 'border-gray-300 bg-white' : 'border-gray-700 bg-gray-800'
+            themeValue ? 'border-gray-300 bg-white' : `border-gray-700 ${styles.DarkTheme}`
           }`}
         >
           <div className="flex items-center justify-between">
@@ -128,7 +128,7 @@ export default function UpdateDescription() {
         {/* About Section */}
         <div
           className={`border rounded-xl p-6 shadow-md hover:-translate-y-1 duration-500 ${
-            themeValue ? 'border-gray-300 bg-white' : 'border-gray-700 bg-gray-800'
+            themeValue ? 'border-gray-300 bg-white' : `border-gray-700 ${styles.DarkTheme}`
           }`}
         >
           <div className="flex items-center justify-between">
@@ -176,7 +176,7 @@ export default function UpdateDescription() {
         {/* Work Short Section */}
         <div
           className={`border rounded-xl p-6 shadow-md hover:-translate-y-1 duration-500 ${
-            themeValue ? 'border-gray-300 bg-white' : 'border-gray-700 bg-gray-800'
+            themeValue ? 'border-gray-300 bg-white' : `border-gray-700 ${styles.DarkTheme}`
           }`}
         >
           <div className="flex items-center justify-between">
@@ -226,7 +226,7 @@ export default function UpdateDescription() {
         {/* Work Long Section */}
         <div
           className={`border rounded-xl p-6 shadow-md hover:-translate-y-1 duration-500 ${
-            themeValue ? 'border-gray-300 bg-white' : 'border-gray-700 bg-gray-800'
+            themeValue ? 'border-gray-300 bg-white' : `border-gray-700 ${styles.DarkTheme}`
           }`}
         >
           <div className="flex items-center justify-between">
@@ -276,7 +276,7 @@ export default function UpdateDescription() {
         <div className="flex items-center gap-x-5 justify-center mt-10">
           <button
             onClick={() => setEditingSection(null)}
-            className="p-2nb  py-1.5 px-6 bg-blue-300 rounded-xl text-black font-semibold cursor-pointer"
+            className="p-2nb  py-1.5 px-6 bg-gray-400 rounded-xl text-black font-semibold cursor-pointer"
           >
             Cancel
           </button>

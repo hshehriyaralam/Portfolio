@@ -37,12 +37,12 @@ export default function UpdateProject() {
 
   const inputBase = `border rounded-md py-2 px-3 w-full focus:outline-none transition-colors duration-300`;
   const inputLight = `focus:ring-2 focus:ring-blue-400 bg-white text-gray-800 placeholder-gray-500`;
-  const inputDark = `focus:ring-2 focus:ring-blue-600 bg-gray-800 text-gray-100 placeholder-gray-400 border-gray-700`;
+  const inputDark = `focus:ring-2 focus:ring-blue-600  ${styles.DarkTheme} text-gray-100 placeholder-gray-400 border-gray-700`;
 
   return (
     <div
       className={`w-full min-h-screen px-4 sm:px-6 md:px-[12%] py-10 ${
-        themeValue ? 'bg-gray-100' : 'bg-gray-900'
+        themeValue ? 'bg-gray-100' : `${styles.DarkTheme}`
       } ${styles.FontOvo}`}
     >
       <h1
@@ -103,7 +103,7 @@ export default function UpdateProject() {
             className={`border rounded-md py-2 px-3 w-full file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold ${
               themeValue
                 ? 'file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100'
-                : 'file:bg-gray-700 file:text-gray-100 hover:file:bg-gray-600'
+                : `file:bg-gray-700 file:text-gray-100 hover:file:${styles.DarkTheme}`
             }`}
           />
           <input

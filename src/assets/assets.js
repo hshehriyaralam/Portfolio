@@ -132,10 +132,10 @@ export const workData = [
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Frontend Development', description: 'Crafting modern, responsive, and engaging interfaces', link: '' },
-    { icon:  assets.web_icon, title: 'Backend Development', description: 'Building secure, scalable, and robust server systems.', link: '' },
-    { icon:  assets.web_icon, title: 'Full Stack Development', description: 'Delivering complete, end-to-end web solutions', link: '' },
-    { icon: assets.web_icon, title: 'Python Pragramming', description: 'Developing efficient, clean, and powerful Python solutions.', link: '' },
+    { icon: assets.web_icon, title: 'Frontend Development', description: 'Crafting modern, responsive, and engaging interfaces', link: 'https://github.com/hshehriyaralam?tab=repositories' },
+    { icon:  assets.web_icon, title: 'Backend Development', description: 'Building secure, scalable, and robust server systems.', link: 'https://github.com/hshehriyaralam?tab=repositories' },
+    { icon:  assets.web_icon, title: 'Full Stack Development', description: 'Delivering complete, end-to-end web solutions', link: 'https://github.com/hshehriyaralam?tab=repositories' },
+    { icon: assets.web_icon, title: 'Python Pragramming', description: 'Developing efficient, clean, and powerful Python solutions.', link: 'https://github.com/hshehriyaralam?tab=repositories' },
 ]
 
 export const infoList = [

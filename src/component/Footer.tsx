@@ -1,7 +1,7 @@
-import { assets } from '@/assets/assets'
+import { assets } from '../assets/assets'
 import Image from 'next/image'
 import React, { useContext } from 'react'
-import { ContextTheme } from '@/Context/ThemeContext'
+import { ContextTheme } from '../Context/ThemeContext'
 
 export default function Footer ()  {
         const {themeValue} = useContext(ContextTheme)
@@ -19,8 +19,8 @@ export default function Footer ()  {
         <p>@ 2025 Shehriyar Alam. All rights reserved</p>
         <ul  className='flex items-center gap-8 justify-center mt-4 sm:mt-0 ' >
             <li><a  target='_blank' href="https://github.com/hshehriyaralam">Github</a></li>
-            <li><a  target='_blank' href="https://github.com/hshehriyaralam">LinkedIn</a></li>
-            <li><a  target='_blank' href="https://github.com/hshehriyaralam">Indeed</a></li>
+            <li><a  target='_blank' href="https://www.linkedin.com/in/hafiz-shehriyar-alam-4178642bb/">LinkedIn</a></li>
+            <li><a  target='_blank' href="https://profile.indeed.com/?hl=en_PK&co=PK&from=gnav-notifcenter">Indeed</a></li>
         </ul>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import {assets} from '@/assets/assets.js'
+import {assets} from '../assets/assets'
 import Styles from '../Styles/styles.module.css'
-import { ContextTheme } from '@/Context/ThemeContext'
+import { ContextTheme } from '../Context/ThemeContext'
 
 
 export default function Navbar ()  {

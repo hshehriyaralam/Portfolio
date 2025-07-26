@@ -6,7 +6,7 @@ import { Image } from 'antd';
 import Styles from '../../Styles/styles.module.css'
 import { ContextDescription } from '../../Context/DescriptionContext'
 import { ContextTheme } from '../../Context/ThemeContext'
-import { ContextProject } from '@/Context/ProjectContext'
+import { ContextProject } from '../../Context/ProjectContext'
 import Link from 'next/link'
 import {motion} from 'motion/react'
 
@@ -63,8 +63,8 @@ export default function AllProject() {
            initial={{opacity : 0}}
           whileInView={{opacity : 1}}
           transition={{duration : 0.6, delay : 0.9}}
-          className={`flex flex-wrap justify-center w-full gap-10 max-w-8xl mx-auto ${
-            project.length < 4 ? 'justify-center' : ''
+          className={`flex flex-wrap justify-center w-full gap-6 max-w-8xl mx-auto ${
+            project.length > 4 ? 'justify-start' : 'justify-center'
           }`}
         >
           {project.map((project, index) => (
@@ -73,7 +73,7 @@ export default function AllProject() {
               transition={{ duration: 0.3 }}
               key={index}
               className={`w-full sm:w-[48%] lg:w-[23%] rounded-2xl overflow-hidden border border-gray-200 ${
-                themeValue ? 'bg-gray-50' : 'bg-[#111827] border border-gray-400'
+                themeValue ? 'bg-gray-50' : `${Styles.DarkTheme} border border-gray-400`
               } flex flex-col justify-between min-h-[400px]`}
             >
               {/* Project Image */}

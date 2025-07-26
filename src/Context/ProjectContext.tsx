@@ -123,7 +123,7 @@ export const ProjectContext = ({children} :ProjectProviderProps ) => {
 
 
 
-  const All = {getProject,loading,project,addProject}
+  const All = {getProject,loading,project,addProject,setLoading}
 
 
   return <ContextProject.Provider value={All}  >
