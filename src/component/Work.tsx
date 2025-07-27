@@ -89,7 +89,7 @@ className="flex flex-wrap justify-center w-full gap-x-6 max-w-8xl mx-auto">
                 </p>
             <div  className='mt-auto flex items-center justify-between pt-3'>
             <div >
-            <Link href={project.readmeLink}>
+            <Link href={project.readmeLink}  target='_blank'>
               <button
                 className={`px-2 py-1.5 rounded-xl text-sm font-normal border cursor-pointer ${
                   themeValue
