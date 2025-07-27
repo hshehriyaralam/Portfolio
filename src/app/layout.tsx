@@ -18,6 +18,9 @@ const OvoFont = Ovo({
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "Personal Portfolio",
+   icons: {
+    icon: '../../public/header_logo.png'
+  },
 };
 
 export default function RootLayout({
