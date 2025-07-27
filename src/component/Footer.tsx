@@ -9,7 +9,7 @@ export default function Footer ()  {
   return (
     <div  className='mt-10'>
       <div  className='text-center '>
-        <Image src={themeValue ? assets.logo : assets.logo_dark} alt=''  className='w-30 mx-auto mb-2 ' />
+        <Image src={ themeValue ? assets.Shehriyar_logo : assets.Shehriyar_logo_white} alt=''  className='w-30 mx-auto mb-2 ' />
         <div  className='w-max flex items-center gap-2 mx-auto '>
             <Image src={assets.mail_icon} alt='' className='w-4' />
             hshehriyaralam@gmail.com
