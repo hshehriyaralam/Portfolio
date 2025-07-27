@@ -1,5 +1,3 @@
-// app/api/upload/route.ts
-
 import { NextRequest } from "next/server";
 import cloudinary from "../../lib/cloudinary";
 
@@ -31,8 +29,8 @@ export async function POST(req: NextRequest) {
     return new Response(JSON.stringify({ url: uploadResponse.secure_url }), {
       status: 200,
     });
-  } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), {
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error }), {
       status: 500,
     });
   }

@@ -1,12 +1,12 @@
-import { assets, workData } from '../assets/assets'
+import { assets } from '../assets/assets'
 import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
 import { ContextTheme } from '../Context/ThemeContext'
 import { ContextDescription } from '../Context/DescriptionContext'
 import { ContextProject } from '../Context/ProjectContext'
 import {motion} from 'motion/react'
-import { Image } from 'antd';
 import Link from 'next/link'
+import Image from 'next/image'
 
 
 
@@ -108,7 +108,7 @@ className="flex flex-wrap justify-center w-full gap-x-6 max-w-8xl mx-auto">
               rel="noopener noreferrer"
               className={`border-[0.2px] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-8 aspect-square flex items-center justify-center hover:bg-gray-400 transition ${Styles.ShadowWhite}`}
             >
-              <img src={(themeValue ? assets.github_icon : assets.github_icon_white).src }   alt="GitHub" className="w-4" />
+              <Image src={themeValue ? assets.github_icon : assets.github_icon_white}   alt="GitHub" className="w-4" />
             </a>
             <a
               href={project.LiveDemo}
@@ -116,7 +116,7 @@ className="flex flex-wrap justify-center w-full gap-x-6 max-w-8xl mx-auto">
               rel="noopener noreferrer"
               className={`border-[0.2] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-8 aspect-square flex items-center justify-center hover:bg-lime-300 transition ${Styles.ShadowWhite}`}
             >
-              <img src={ (themeValue ? assets.send_icon : assets.send_icon_white).src} alt="Live Demo" className="w-4" />
+              <Image src={themeValue ? assets.send_icon : assets.send_icon_white} alt="Live Demo" className="w-4" />
             </a>
           </div>
                 </div>
@@ -131,7 +131,7 @@ className="flex flex-wrap justify-center w-full gap-x-6 max-w-8xl mx-auto">
           whileInView={{opacity : 1}}
           transition={{duration : 0.5, delay : 1.1}}
        href={'./Projects'} className={`w-max flex items-center justify-center gap-2  border-[0.7px]  ${themeValue ?    'border-gray-700 text-gray-700 '   : 'border-gray-400 text-gray-400  '} rounded-full py-2 px-8 mx-auto  my-14 ${Styles.HoverLightHover}  duration-500`} >
-        Show More <img  src={ (themeValue ?  assets.right_arrow_bold  : assets.right_arrow_white).src}  alt='Right Arrow'
+        Show More <Image  src={themeValue ?  assets.right_arrow_bold  : assets.right_arrow_white}  alt='Right Arrow'
         className='w-4'  
         />
        </motion.a>

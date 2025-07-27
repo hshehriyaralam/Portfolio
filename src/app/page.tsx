@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import About from '../component/About';
 import Contact from '../component/Contact';
 import Footer from '../component/Footer';

@@ -28,7 +28,7 @@ export const  ContextProject = createContext<ProjectContextType>({
     project : [],
     loading : false,
     getProject : async () => {},
-    addProject : async ( title : string, description : string,githubLink : string,LiveDemo : string,readmeLink : string, bgImage: File | null, ) => {},
+    addProject : async () => {},
 })
 
 interface ProjectProviderProps {
@@ -60,10 +60,10 @@ export const ProjectContext = ({children} :ProjectProviderProps ) => {
   }
 
   const addProject = async (
-    title : String,
-    description: String,
-    githubLink : String,
-    LiveDemo : String,
+    title : string,
+    description: string,
+    githubLink : string,
+    LiveDemo : string,
     readmeLink : string,
     bgImage: File | null
       ) => {
@@ -86,7 +86,7 @@ export const ProjectContext = ({children} :ProjectProviderProps ) => {
           // get image URL from cloudinary
           const cloudData = await cloudRes.json()
           if(!cloudRes.ok){
-            const errorText = await cloudRes.text()
+             await cloudRes.text()
              throw new Error(cloudData.error);
           }
           imageURL = cloudData.url

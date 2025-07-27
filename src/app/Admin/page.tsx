@@ -2,14 +2,13 @@
 import UpdateDescription from "./UpdateDescription";
 import UpdateProject from "./UpdateProject";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
 
 
 
 
 export default function Admin(){
    const router = useRouter();
-   const [loading, setLoading] = useState(false)
      useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -17,11 +16,12 @@ export default function Admin(){
         credentials: 'include' 
       })
         if (res.status === 200) {
-          setLoading(false)
+
         } else {
           router.push('/Login')
         }
       } catch (error) {
+        console.log("errro",error)
         router.push('/Login')
       }
     }

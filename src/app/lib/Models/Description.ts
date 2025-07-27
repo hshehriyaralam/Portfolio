@@ -1,14 +1,11 @@
-import mongoose,{Schema, model,models,Document} from "mongoose";
+import {Schema, model,models,Document} from "mongoose";
 
 
-// type infere
 export interface IDescription extends Document {
     section : 'hero' | 'about' | 'workShot' | 'workLong',
     text : string
 }
 
-
-// Schema 
 const DescriptionSchema = new Schema<IDescription>({
     
     section : {

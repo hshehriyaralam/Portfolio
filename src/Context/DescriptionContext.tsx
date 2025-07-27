@@ -26,7 +26,7 @@ export const ContextDescription = createContext<DescriptionContextType>({
     loading : false,
     getDescription : async () => {},
     addDescription : async () => {},
-    getDescriptionBySection :  (sectionName : string) => '',
+    getDescriptionBySection :  () => '',
     updateDescription : async () => {}
 })
 
@@ -57,10 +57,8 @@ export const DescriptionContext = ({children} :DescriptionProviderProps ) => {
             setLoading(false)
         }
     }
-   
 
-   // addd Description 
-   const addDescription =  async (section  :String,text: String) => {
+   const addDescription =  async (section  :string,text: string) => {
     try{
         setLoading(true)
         const res = await fetch('/api/Description', {
@@ -86,8 +84,6 @@ export const DescriptionContext = ({children} :DescriptionProviderProps ) => {
     }
    }
 
-
-   // Update Descriptions
    const updateDescription = async (section :string, text : string) => {
     try{
         setLoading(true)
@@ -115,8 +111,6 @@ export const DescriptionContext = ({children} :DescriptionProviderProps ) => {
     
    }
 
-
-   // Descriptions filterd by sections 
    const getDescriptionBySection = (sectionName: string) =>  {
     const descObj = descriptions.find(
       (item) => item.section.toLowerCase() === sectionName.toLowerCase()

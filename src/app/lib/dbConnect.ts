@@ -12,7 +12,7 @@ export async function connectDB(){
     throw new Error("❌ MONGODB_URL is not defined in .env.local")
   }
     try{
-        let connected = await mongoose.connect(MONGODB_URL)
+        const connected = await mongoose.connect(MONGODB_URL)
         if(connected.connection.readyState == 1) isConnected = true 
     }catch(error){
         console.log("DB Connected Error", error)

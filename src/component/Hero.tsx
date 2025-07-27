@@ -29,7 +29,7 @@ export default function Hero ()  {
       whileInView={{y : 0, opacity:1}}
       transition={{duration : 0.6 , delay : 0.3}}
       className={`flex item-end gap-2 text-xl md:text-2xl mb-3 ${Styles.FontOvo} `}>
-        Hi! I'm Shehriyar Alam <Image src={assets.hand_icon} alt='hand_icon' className='w-6' />
+        Hi! I&rsquo;m Shehriyar Alam <Image src={assets.hand_icon} alt='hand_icon' className='w-6' />
       </motion.h3>
       <motion.h1
       initial={{y : -30, opacity:0}}

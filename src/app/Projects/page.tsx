@@ -1,8 +1,7 @@
 'use client'
-
 import React, { useContext } from 'react'
 import { assets } from '../../assets/assets'
-import { Image } from 'antd';
+import Image from 'next/image'
 import Styles from '../../Styles/styles.module.css'
 import { ContextDescription } from '../../Context/DescriptionContext'
 import { ContextTheme } from '../../Context/ThemeContext'
@@ -128,7 +127,7 @@ export default function AllProject() {
               rel="noopener noreferrer"
               className={`border-[0.2px] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-8 aspect-square flex items-center justify-center hover:bg-gray-400 transition ${Styles.ShadowWhite}`}
             >
-              <img src={(themeValue ? assets.github_icon : assets.github_icon_white).src }   alt="GitHub" className="w-4" />
+              <Image src={themeValue ? assets.github_icon : assets.github_icon_white }   alt="GitHub" className="w-4" />
             </a>
             <a
               href={project.LiveDemo}
@@ -136,7 +135,7 @@ export default function AllProject() {
               rel="noopener noreferrer"
               className={`border-[0.2] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-8 aspect-square flex items-center justify-center hover:bg-lime-300 transition ${Styles.ShadowWhite}`}
             >
-              <img src={ (themeValue ? assets.send_icon : assets.send_icon_white).src} alt="Live Demo" className="w-4" />
+              <Image src={ themeValue ? assets.send_icon : assets.send_icon_white} alt="Live Demo" className="w-4" />
             </a>
           </div>
                 </div>

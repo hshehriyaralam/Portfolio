@@ -13,10 +13,11 @@ export default function Contact ()  {
     const {themeValue} = useContext(ContextTheme)
     
 
-  const onSubmit = async (event : any) => {
+  const onSubmit = async (event :React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Sending....");
-    const formData = new FormData(event.target);
+     const form = event.target as HTMLFormElement
+    const formData = new FormData(form);
 
     formData.append("access_key", "e2236475-6dc8-451f-bf80-4278990d1195");
 
@@ -29,7 +30,7 @@ export default function Contact ()  {
 
     if (data.success) {
       setResult("Form Submitted Successfully");
-      event.target.reset();
+      form.reset();
     } else {
       console.log("Error", data);
       setResult(data.message);
@@ -55,7 +56,7 @@ export default function Contact ()  {
      initial={{  opacity : 0}}
     whileInView={{opacity : 1}}
     transition={{duration : 0.5, delay :  0.7}}
-    className={`text-center max-w-3xl mx-auto mt-4 mb-6 ${Styles.FontOvo} `} >I'd love to hear from you! If you have any questions, comments, or feedback, please use the form below  </motion.p>
+    className={`text-center max-w-3xl mx-auto mt-4 mb-6 ${Styles.FontOvo} `} >I&rsquo;d love to hear from you! If you have any questions, comments, or feedback, please use the form below  </motion.p>
 
        <motion.form 
      initial={{  opacity : 0}}

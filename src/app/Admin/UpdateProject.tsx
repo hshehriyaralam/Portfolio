@@ -31,7 +31,7 @@ export default function UpdateProject() {
       setReadmeLink('')
       router.push('/#work')
     }catch(error){
-      console.log("Error");      
+      console.log("Error",error);      
     }
   }
 

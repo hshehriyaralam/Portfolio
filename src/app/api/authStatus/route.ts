@@ -15,5 +15,6 @@ export async function GET(req: Request) {
     return NextResponse.json({ authenticated: true, user: payload }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ authenticated: false }, { status: 401 });
+    console.log(err)
   }
 }

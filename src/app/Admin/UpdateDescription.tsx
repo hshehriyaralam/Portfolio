@@ -2,7 +2,7 @@
 import styles from '../../Styles/styles.module.css'
 import { ContextTheme } from '../../Context/ThemeContext'
 import { ContextDescription } from '../../Context/DescriptionContext'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext,  useState } from 'react'
 import { Pencil } from 'lucide-react'
 import { useRouter } from "next/navigation";
 

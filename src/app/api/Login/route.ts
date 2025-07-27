@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "../../lib/dbConnect";
 import {User} from '../../lib/Models/user'
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
 
 
-export async function POST(req : any){
+export async function POST(req:NextRequest){
     try{
         const body = await req.json();
         const {email,password} = body;
@@ -14,21 +14,15 @@ export async function POST(req : any){
         }
 
         await connectDB()
-
-        //user find
         const user = await User.findOne({email})
         if(!user){
             return NextResponse.json({ error: "user Not Registerd " }, { status: 401 });
         }
-
-        
-        //password match 
         const passwordMatch = await bcrypt.compare(password, user.password)
         if(!passwordMatch){
             return NextResponse.json({ error: "Password is InCorrect" }, { status: 401 });
         }
 
-        //generate Token
                 const token = jwt.sign(
                 { id: user._id, email: user.email },
                 process.env.JWT_SECRET as string,

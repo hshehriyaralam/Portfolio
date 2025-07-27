@@ -6,7 +6,7 @@ import { connectDB } from "../../lib/dbConnect";
 
 
 
-export async function GET(req: NextRequest){
+export async function GET(){
     try{
         await connectDB()
         const allDescriptions = await Description.find()
@@ -46,7 +46,6 @@ export async function PUT(req : NextRequest){
 
 
         await connectDB()
-        //update descripitions
         const updated = await Description.findOneAndUpdate(
             {section},
             {text},
