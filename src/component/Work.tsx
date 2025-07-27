@@ -46,7 +46,7 @@ export default function Work ()  {
           whileInView={{opacity : 1}}
           transition={{duration : 0.6, delay : 0.9}}
 
-className="flex flex-wrap justify-center w-full gap-x-6 max-w-8xl mx-auto">
+className="flex flex-wrap justify-center w-full gap-6 max-w-8xl mx-auto">
   {project.slice(0,4).map((project, index) => (
         <motion.div
               whileHover={{ scale: 1.05 }}
