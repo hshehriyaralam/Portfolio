@@ -3,7 +3,6 @@ import React, { useContext } from 'react'
 import { assets } from '../../assets/assets'
 import Image from 'next/image'
 import Styles from '../../Styles/styles.module.css'
-import { ContextDescription } from '../../Context/DescriptionContext'
 import { ContextTheme } from '../../Context/ThemeContext'
 import { ContextProject } from '../../Context/ProjectContext'
 import Link from 'next/link'
@@ -11,7 +10,6 @@ import {motion} from 'motion/react'
 
 
 export default function AllProject() {
-  const { getDescriptionBySection, loading } = useContext(ContextDescription)
   const { themeValue } = useContext(ContextTheme)
   const { project } = useContext(ContextProject)
 
@@ -38,7 +36,7 @@ export default function AllProject() {
 
       {/* Description */}
       <div className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo}`}>
-        {loading ? (
+        {/* {loading ? (
           <motion.p
           initial={{opacity : 0, y:-20}}
           whileInView={{opacity : 1, y:0}}
@@ -53,7 +51,17 @@ export default function AllProject() {
           <p className={`${themeValue ? 'text-black' : 'text-gray-300'}`}>
             {getDescriptionBySection('workLong')}
           </p>
-        )}
+        )} */}
+        <motion.p
+          initial={{opacity : 0, y:-20}}
+          whileInView={{opacity : 1, y:0}}
+          transition={{duration : 0.5, delay : 0.7}}
+            className={`font-semibold text-lg ${
+              themeValue ? 'text-black' : 'text-white'
+            }`}
+          >
+            Explore three of my key projects that highlight strong frontend skills, full-stack development, and real-time data handling. MoneyMinder is a complete MERN Stack finance tracking app with secure authentication, dynamic CRUD operations, insightful charts, analytics, and exportable reports. IntelliBlog is an AI-powered blogging platform featuring automated summaries, intelligent tag generation, protected routes, author analytics, bookmarking, likes, text-to-speech, and a full admin panel built with Next.js and custom AI logic. CARTZY is a modern e-commerce application built with Next.js, TypeScript, and Sanity CMS, offering product browsing, advanced filters, and a real-time cart with quantity and price updates—all optimized for a clean, fast, and responsive user experience.
+          </motion.p>
       </div>
 
       {/* Project Cards Grid */}

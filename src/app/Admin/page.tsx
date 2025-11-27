@@ -1,11 +1,7 @@
 'use client'
-import UpdateDescription from "./UpdateDescription";
 import UpdateProject from "./UpdateProject";
 import { useRouter } from "next/navigation";
 import {useEffect } from "react";
-
-
-
 
 export default function Admin(){
    const router = useRouter();
@@ -30,7 +26,6 @@ export default function Admin(){
   }, [router])
   return(
     <div>
-    <UpdateDescription />
     <UpdateProject />
     </div>
   )

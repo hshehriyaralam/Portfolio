@@ -3,7 +3,6 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
 import { ContextTheme } from '../Context/ThemeContext'
-import { ContextDescription } from '../Context/DescriptionContext'
 import {motion} from 'motion/react'
 
 
@@ -11,7 +10,6 @@ import {motion} from 'motion/react'
 
 export default function About ()  {
       const {themeValue} = useContext(ContextTheme)
-       const {getDescriptionBySection,loading} = useContext(ContextDescription)
       
   return (
     <motion.div 
@@ -49,9 +47,11 @@ export default function About ()  {
         
         className='flex-1' >
           <div className={`${Styles.FontOvo} `} >
-       {  loading ? 
+       {/* {  loading ? 
        <p  className={`${Styles.FontOvo} font-semibold text-2xl ${themeValue ? 'text-black' : 'text-white'} `}>Loading</p> 
-      : getDescriptionBySection('about')   }
+      : getDescriptionBySection('about')   } */}
+      <p  className={`${Styles.FontOvo} font-semibold text-2xl ${themeValue ? 'text-black' : 'text-white'} `}>Hi, I’m Hafiz Shehriyar Alam — a MERN Stack Developer focused on modern frontend development. I build responsive, user-centric interfaces using React, Shadcn UI, and ReactBits, and have experience with backend tools like Node.js, Express, Firebase, and Cloudinary. I recently completed a 2-month Frontend Development Internship at Innova360, where I worked on real-world UI/UX and React-based projects. Currently pursuing a Bachelor’s in Software Engineering, I continue to develop practical and modern web applications.</p> 
+
       </div>
           <motion.ul
               initial={{opacity : 0}}

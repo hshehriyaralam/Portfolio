@@ -3,14 +3,13 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import Styles from '../Styles/styles.module.css'
 import { ContextTheme } from '../Context/ThemeContext'
-import { ContextDescription } from "../Context/DescriptionContext"
 import {motion} from 'motion/react'
 
 
 
 export default function Hero ()  {
     const {themeValue} = useContext(ContextTheme)
-    const {getDescriptionBySection,loading} = useContext(ContextDescription)
+
 
    
     
@@ -39,13 +38,20 @@ export default function Hero ()  {
         MERN Stack Developer  
       </motion.h1>
       <div className={`max-w-2xl mx-auto ${Styles.FontOvo} `} >
-       {  loading ? 
+       {/* {  loading ? 
        <motion.p
       initial={{opacity:0}}
       whileInView={{opacity:1}}
       transition={{duration : 0.6 , delay : 0.7}}
        className={`${Styles.FontOvo} font-semibold text-2xl ${themeValue ? 'text-black' : 'text-white'} `}>Loading</motion.p> 
-      : getDescriptionBySection('hero')   }
+      : getDescriptionBySection('hero')   } */}
+         <motion.p
+      initial={{opacity:0}}
+      whileInView={{opacity:1}}
+      transition={{duration : 0.6 , delay : 0.7}}
+       className={`${Styles.FontOvo}  text-md ${themeValue ? 'text-black' : 'text-white'} `}>
+        A MERN Stack Developer building dynamic, scalable, and user-focused web applications with modern JavaScript technologies and clean, optimized architectures.
+        </motion.p> 
       </div>
       <div  className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
         <motion.a
