@@ -2,7 +2,6 @@ import { assets } from "../assets/assets";
 import React, { useContext } from "react";
 import Styles from "../Styles/styles.module.css";
 import { ContextTheme } from "../Context/ThemeContext";
-import { ContextProject } from "../Context/ProjectContext";
 import { motion } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,8 +12,6 @@ export default function Work() {
   // const { project } = useContext(ContextProject);
   const {
     data: projects,
-    error,
-    isLoading,
   } = useGetProjectsQuery(undefined, {
     pollingInterval: 10000,
     refetchOnMountOrArgChange: true,
