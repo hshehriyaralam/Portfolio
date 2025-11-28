@@ -2,8 +2,6 @@ import { Outfit, Ovo } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeContext} from "../Context/ThemeContext";
-import  {ProjectContext} from '../Context/ProjectContext'
-import ReduxProviders from "./ReduxProider";
 
 
 const OutfitFont  =  Outfit({
@@ -33,13 +31,11 @@ export default function RootLayout({
         className={`${OutfitFont.className} ${OvoFont.className}  antialiased leading-8 overflow-x-hidden
           `}
           
-      ><ReduxProviders>
-        <ThemeContext>
-        <ProjectContext>
+      >
+  
+      <ThemeContext>
         {children}
-        </ProjectContext>
       </ThemeContext>
-      </ReduxProviders>
       </body>
     </html>
   );

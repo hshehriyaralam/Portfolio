@@ -50,7 +50,7 @@ export default function About ()  {
        {/* {  loading ? 
        <p  className={`${Styles.FontOvo} font-semibold text-2xl ${themeValue ? 'text-black' : 'text-white'} `}>Loading</p> 
       : getDescriptionBySection('about')   } */}
-      <p  className={`${Styles.FontOvo} font-semibold text-2xl ${themeValue ? 'text-black' : 'text-white'} `}>Hi, I’m Hafiz Shehriyar Alam — a MERN Stack Developer focused on modern frontend development. I build responsive, user-centric interfaces using React, Shadcn UI, and ReactBits, and have experience with backend tools like Node.js, Express, Firebase, and Cloudinary. I recently completed a 2-month Frontend Development Internship at Innova360, where I worked on real-world UI/UX and React-based projects. Currently pursuing a Bachelor’s in Software Engineering, I continue to develop practical and modern web applications.</p> 
+      <p  className={`${Styles.FontOvo} text-md ${themeValue ? 'text-black' : 'text-white'} `}>Hi, I’m Hafiz Shehriyar Alam — a MERN Stack Developer focused on modern frontend development. I build responsive, user-centric interfaces using React, Shadcn UI, and ReactBits, and have experience with backend tools like Node.js, Express, Firebase, and Cloudinary. I recently completed a 2-month Frontend Development Internship at Innova360, where I worked on real-world UI/UX and React-based projects. Currently pursuing a Bachelor’s in Software Engineering, I continue to develop practical and modern web applications.</p> 
 
       </div>
           <motion.ul

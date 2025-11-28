@@ -4,14 +4,14 @@ import { assets } from '../../assets/assets'
 import Image from 'next/image'
 import Styles from '../../Styles/styles.module.css'
 import { ContextTheme } from '../../Context/ThemeContext'
-import { ContextProject } from '../../Context/ProjectContext'
 import Link from 'next/link'
 import {motion} from 'motion/react'
+import { Project } from '@/Context/project'
 
 
 export default function AllProject() {
   const { themeValue } = useContext(ContextTheme)
-  const { project } = useContext(ContextProject)
+  // const { project } = useContext(ContextProject)
 
   return (
     <motion.div
@@ -36,22 +36,6 @@ export default function AllProject() {
 
       {/* Description */}
       <div className={`text-center max-w-2xl mx-auto mt-4 mb-8 ${Styles.FontOvo}`}>
-        {/* {loading ? (
-          <motion.p
-          initial={{opacity : 0, y:-20}}
-          whileInView={{opacity : 1, y:0}}
-          transition={{duration : 0.5, delay : 0.7}}
-            className={`font-semibold text-lg ${
-              themeValue ? 'text-black' : 'text-white'
-            }`}
-          >
-            Please wait....
-          </motion.p>
-        ) : (
-          <p className={`${themeValue ? 'text-black' : 'text-gray-300'}`}>
-            {getDescriptionBySection('workLong')}
-          </p>
-        )} */}
         <motion.p
           initial={{opacity : 0, y:-20}}
           whileInView={{opacity : 1, y:0}}
@@ -71,10 +55,10 @@ export default function AllProject() {
           whileInView={{opacity : 1}}
           transition={{duration : 0.6, delay : 0.9}}
           className={`flex flex-wrap justify-center w-full gap-6 max-w-8xl mx-auto ${
-            project.length > 4 ? 'justify-start' : 'justify-center'
+            Project.length > 4 ? 'justify-start' : 'justify-center'
           }`}
         >
-          {project.map((project, index) => (
+          {Project.map((project, index) => (
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
@@ -88,7 +72,7 @@ export default function AllProject() {
                 <Image
                   width={280}
                   height={170}
-                  src={project.bgImage}
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-40 object-cover "
                 />
@@ -116,7 +100,7 @@ export default function AllProject() {
                 </p>
             <div  className='mt-auto flex items-center justify-between pt-3'>
             <div >
-            <Link href={project.readmeLink} target='_blank'>
+            <Link href={project.readMoreUrl} target='_blank'>
               <button
                 className={`px-2 py-1.5 rounded-xl text-sm font-normal border cursor-pointer ${
                   themeValue
@@ -130,7 +114,7 @@ export default function AllProject() {
           </div>
             <div className="flex items-center justify-end  gap-2 ">
             <a
-              href={project.githubLink}
+              href={project.repositoryUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={`border-[0.2px] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-8 aspect-square flex items-center justify-center hover:bg-gray-400 transition ${Styles.ShadowWhite}`}
@@ -138,7 +122,7 @@ export default function AllProject() {
               <Image src={themeValue ? assets.github_icon : assets.github_icon_white }   alt="GitHub" className="w-4" />
             </a>
             <a
-              href={project.LiveDemo}
+              href={project.projectUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={`border-[0.2] rounded-full ${themeValue ? 'border-black' : 'border-white'} w-8 aspect-square flex items-center justify-center hover:bg-lime-300 transition ${Styles.ShadowWhite}`}
